@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Consultation | LT Tax Co.</title><style>
+:root{--burgundy:#5A0E1E;--burgundy-dark:#3f0914;--charcoal:#2E2E2E;--cream:#fbf7ef;--cream2:#f5eee3;--white:#fffdf9;--border:#dfd4c6}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--charcoal);font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+.wrap{width:min(900px,calc(100% - 36px));margin:auto}header{border-bottom:1px solid #e8ded0;background:var(--cream)}
+.nav{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand img{width:300px;max-width:48vw;display:block}
+nav a{color:var(--charcoal);font-weight:700;text-decoration:none}.eyebrow{color:var(--burgundy);font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+main{padding:58px 0 90px}h1,h2{font-family:Georgia,"Times New Roman",serif;color:var(--burgundy-dark);font-weight:500}
+h1{font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.05;margin:10px 0 22px}h2{font-size:1.8rem;margin-top:36px}
+.price{background:var(--white);border-left:4px solid var(--burgundy);padding:20px 22px;margin:28px 0}
+.email-box{background:var(--white);border:1px solid var(--border);padding:28px;margin-top:32px;border-radius:6px}
+.field{margin:16px 0}label{display:block;font-weight:700;margin-bottom:7px}input,textarea{width:100%;padding:11px 12px;border:1px solid #cfc4b6;border-radius:4px;background:white;font:inherit}
+input[readonly]{background:#f4efe7;color:#5c5651}textarea{min-height:180px;resize:vertical}
+.btn{display:inline-block;border:1px solid var(--burgundy);border-radius:4px;padding:12px 20px;font-weight:700;font:inherit;cursor:pointer;background:var(--burgundy);color:white}
+.note{font-size:.92rem;color:#5c5651}.security{background:var(--cream2);padding:16px 18px;border-left:3px solid var(--burgundy);margin:22px 0}
+footer{background:var(--charcoal);color:#f5eee3;padding:30px 0}footer a{color:white}
+@media(max-width:650px){.nav{flex-direction:column;align-items:flex-start;padding:14px 0}.brand img{width:260px;max-width:100%}main{padding-top:38px}}
+</style></head><body>
+<header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html">Back to Home</a></nav></div></header>
+<main><div class="wrap"><div class="eyebrow">Tax Consultations</div><h1>Request a Consultation</h1>
+<p>Thank you for reaching out about a tax consultation. To help us make the best use of your appointment time, please include a list of the questions or tax topics you would like to discuss.</p>
+<div class="price"><strong>Consultations are $50 per hour with a 2-hour minimum ($100 minimum).</strong><br>After the first 2 hours, additional time is billed in 15-minute increments at <strong>$12.50 per 15 minutes.</strong></div>
+<div class="security"><strong>Please do not include Social Security numbers, account numbers, tax documents, or other sensitive personal information in this request.</strong> Secure documents should be provided through the client portal when requested.</div>
+<div class="email-box"><h2 style="margin-top:0">Send Us a Request</h2><p>Fill in your email address and message below, then click <strong>Send Request</strong>. Your request will be sent directly to LT Tax Co. without opening your email app.</p><form class="directForm"><input type="hidden" name="access_key" value="c177d554-ddf8-468f-b647-8dc9067ddc10"><input type="hidden" name="subject" value="Request a Consultation"><input type="hidden" name="from_name" value="LT Tax Co. Website"><input type="hidden" name="form_type" value="Tax Consultation Request"><div class="field"><label>Your email</label><input name="email" type="email" placeholder="you@example.com" required></div><div class="field"><label>Message</label><textarea name="message" placeholder="Please list the tax questions or topics you would like to discuss." required></textarea></div><button class="btn" type="submit">Send Request</button><p class="note formStatus"></p></form></div></div></main>
+<footer><div class="wrap"><strong>LT Tax Co.</strong> &nbsp; | &nbsp; <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div></footer>
+<script>
+document.querySelector('.directForm').addEventListener('submit',async function(e){e.preventDefault();const btn=this.querySelector('button'),status=this.querySelector('.formStatus');btn.disabled=true;btn.textContent='Sending...';status.textContent='';try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)});const j=await r.json();if(j.success){status.textContent='Request sent! Thank you. LT Tax Co. has received your message.';this.reset();btn.textContent='Sent';}else throw new Error(j.message||'Submission failed');}catch(err){status.textContent='We could not send your request. Please try again.';btn.disabled=false;btn.textContent='Send Request';}}
+);
+</script></body></html>

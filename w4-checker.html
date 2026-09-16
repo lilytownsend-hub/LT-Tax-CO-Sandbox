@@ -1,0 +1,241 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>W-4 Checker | LT Tax Co.</title><style>:root{--b:#5A0E1E;--bd:#3f0914;--c:#2E2E2E;--cr:#fbf7ef;--cr2:#f5eee3;--w:#fffdf9;--ok:#eef5ee}*{box-sizing:border-box}body{margin:0;background:var(--cr);color:var(--c);font-family:Arial,Helvetica,sans-serif;line-height:1.55}.wrap{width:min(900px,calc(100% - 36px));margin:auto}header{border-bottom:1px solid #e8ded0}.nav{min-height:90px;display:flex;align-items:center;justify-content:space-between}.brand img{width:285px;max-width:45vw}.nav a{text-decoration:none;font-weight:700}main{padding:50px 0 80px}h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--bd)}h1{font-size:clamp(2.5rem,5vw,4rem);font-weight:500;margin:8px 0 12px}.eyebrow{color:var(--b);font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.card{background:var(--w);padding:26px;margin:22px 0;border-top:3px solid var(--b)}.field{margin:16px 0}.field label,.label{display:block;font-weight:700;margin-bottom:6px}input,select,textarea{width:100%;padding:11px;border:1px solid #cfc7bb;border-radius:4px;background:white;font:inherit}.money{position:relative}.choices{display:grid;gap:10px}.choice{display:flex;gap:10px;align-items:flex-start;padding:13px;border:1px solid #ddd4c8;border-radius:4px;background:#fff}.choice input{width:auto;margin-top:5px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.btn{border:1px solid var(--b);background:var(--b);color:#fff;padding:12px 18px;border-radius:4px;font-weight:700;cursor:pointer}.btn.secondary{background:transparent;color:var(--b)}.actions{display:flex;gap:12px;flex-wrap:wrap}.note,.warning{padding:16px 18px;margin:18px 0;border-left:3px solid var(--b);background:var(--cr2)}.result{background:var(--ok);padding:20px;border-left:4px solid var(--b);margin:18px 0}.small{font-size:.9rem;color:#5c5751}.hidden{display:none}.wizard-card-off{display:none!important}.wizard-nav{display:flex;justify-content:space-between;gap:12px;margin:18px 0 30px}.wizard-progress{font-size:.9rem;color:#5c5751;margin:0 0 10px}.wizard-card-title{margin-bottom:14px}.checks label{display:block;margin:9px 0}.checks input{width:auto;margin-right:8px}footer{background:var(--c);color:white;padding:28px 0}footer a{color:white}@media(max-width:650px){.grid2{grid-template-columns:1fr}.nav{padding:12px 0;flex-direction:column;align-items:flex-start}.brand img{max-width:100%}}</style></head><body>
+<header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><a href="resources.html">← Back to Resources</a></div></header><main><div class="wrap"><div class="eyebrow">Free Withholding Review</div><h1>W-4 Checker</h1><p>Not sure whether enough federal and state tax is coming out of your paycheck? Answer a few questions and LT Tax Co. will review your information and prepare an example federal W-4 and applicable state withholding form for you — <strong>free</strong>. <strong>Nothing is sent to your employer.</strong></p>
+<div class="warning"><strong>Have your most recent paystub(s) handy.</strong> Do not enter Social Security numbers, bank account numbers, or upload tax documents here.</div>
+<form id="w4Form">
+<div class="card"><h2>1. How do you like your tax returns?</h2><div class="choices"><label class="choice"><input type="radio" name="goal" value="more" required><span><strong>I’d like a little more back</strong></span></label><label class="choice"><input type="radio" name="goal" value="even"><span><strong>Keep me close to even</strong></span></label><label class="choice"><input type="radio" name="goal" value="owe100"><span><strong>I’m okay owing a little</strong></span></label></div>
+<div id="priorOutcome" class="field hidden"><label>What happened on your last federal tax return?</label><select id="lastResult" name="last_return_result"><option value="">Choose...</option><option value="refund">I got a refund</option><option value="owed">I owed</option><option value="even">I was about even</option><option value="unknown">I don’t know / this is my first return</option></select></div><div id="lastAmountWrap" class="field hidden"><label id="lastAmountLabel">About how much?</label><input type="number" min="0" step="1" id="lastAmount" name="last_return_amount"></div></div>
+
+<div class="card"><h2>2. About you</h2><div class="field"><label>First name</label><input name="first_name" required></div><div class="field"><label>Last name</label><input name="last_name" required></div><div class="field"><label>Email</label><input type="email" name="email" required></div></div>
+
+<div class="card"><h2>3. Your tax situation</h2><div class="field"><label>How do you expect to file your taxes?</label><select name="status" id="status" required><option value="">Choose...</option><option value="single">Single</option><option value="mfj">Married filing jointly</option><option value="mfs">Married filing separately</option><option value="hoh">Head of household</option><option value="qss">Qualifying surviving spouse</option></select></div><div class="field"><label>What state do you live in?</label><select name="state" id="state" required><option value="">Choose...</option><option value="WI">Wisconsin</option><option value="IL">Illinois</option><option value="IA">Iowa</option><option value="MN">Minnesota</option><option value="MI">Michigan</option></select></div><div class="field"><label>Can someone else claim you as a dependent?</label><select id="claimedDependent" name="claimed_as_dependent" required><option value="">Choose...</option><option value="no">No</option><option value="yes">Yes</option></select></div></div>
+<div class="card"><h2>4. Where you work</h2><div class="field"><label>Do you work in a state you don’t live in?</label><select id="workDifferent" name="work_in_different_state" required><option value="">Choose...</option><option value="no">No</option><option value="yes">Yes</option></select></div><div id="workStateWrap" class="field hidden"><label>What state do you work in?</label><select id="workState" name="work_state"><option value="">Choose...</option><option value="WI">Wisconsin</option><option value="IL">Illinois</option><option value="IA">Iowa</option><option value="MN">Minnesota</option><option value="MI">Michigan</option></select></div></div>
+
+<div class="card"><h2>5. A quick tax question</h2><div class="field"><label>Do you have dependents?</label><select id="hasDependents" name="has_dependents" required><option value="">Choose...</option><option value="no">No</option><option value="yes">Yes</option></select></div><div id="dependentsWrap" class="hidden"><div class="field"><label>How many dependents do you have?</label><input type="number" min="1" value="1" name="dependent_count" id="dependentCount"></div><div class="field"><label>Are any of them age 17 or older?</label><select id="dependent17Plus" name="dependent_17_plus"><option value="">Choose...</option><option value="no">No</option><option value="yes">Yes</option></select></div></div></div>
+
+<div class="card"><h2>6. Jobs and work</h2><div class="field"><label>How many W-2 jobs do you personally expect to have this year?</label><input type="number" min="1" max="10" value="1" id="jobCount" name="personal_job_count" required></div><div id="spouseWorkWrap" class="field hidden"><label>Does your spouse also have a W-2 job?</label><select id="spouseWorkType" name="spouse_work_type"><option value="">Choose...</option><option value="w2">Yes</option><option value="self">No — self-employed</option><option value="homemaker">No — homemaker</option></select></div><input type="hidden" id="spouseJobCount" name="spouse_job_count" value="0"></div>
+
+<div class="card"><h2>7. State withholding details</h2><p class="small">These help LT Tax Co. estimate the selections that belong on your state withholding certificate.</p><div class="field"><label>Are you age 65 or older?</label><select id="age65" name="age_65_or_older"><option value="no">No</option><option value="yes">Yes</option></select></div><div class="field"><label>Are you legally blind for tax purposes?</label><select id="blind" name="legally_blind"><option value="no">No</option><option value="yes">Yes</option></select></div></div>
+
+<div class="card" id="spouseStateCard"><h2>8. Spouse state details</h2><div class="field"><label>If married, is your spouse age 65 or older?</label><select id="spouseAge65" name="spouse_age_65_or_older"><option value="no">No</option><option value="yes">Yes</option></select></div><div class="field"><label>If married, is your spouse legally blind for tax purposes?</label><select id="spouseBlind" name="spouse_legally_blind"><option value="no">No</option><option value="yes">Yes</option></select></div></div>
+
+<div class="card"><h2>9. Your paystub so far</h2><p class="small">Use year-to-date amounts from your most recent paystub. Enter only your own W-2 information here.</p><div class="field"><label>Your W-2 wages so far this year</label><input type="number" min="0" step=".01" name="wages_ytd" id="wagesYtd" required></div><div class="field"><label>How much federal income tax has been withheld from your pay so far this year?<br><span class="small">On your paystub, this may appear as <strong>Federal Income Tax, Federal Withholding, Federal Tax, FIT, or FITW</strong> — or something similar under taxes.</span></label><input type="number" min="0" step=".01" name="fed_ytd" id="fedYtd" required></div><div class="field"><label>How much state income tax has been withheld from your pay so far this year?</label><input type="number" min="0" step=".01" name="state_ytd" id="stateYtd" required></div></div>
+
+<div id="spouseYtdCard" class="card hidden"><h2>10. Your spouse's paystub so far</h2><p class="small">Use year-to-date amounts from your spouse's most recent W-2 paystub. Keep these amounts separate from yours.</p><div class="field"><label>Your spouse's W-2 wages so far this year</label><input type="number" min="0" step=".01" name="spouse_wages_ytd" id="spouseWagesYtd"></div><div class="field"><label>How much federal income tax has been withheld from your spouse's pay so far this year?<br><span class="small">This may appear as <strong>Federal Income Tax, Federal Withholding, Federal Tax, FIT, or FITW</strong> — or something similar under taxes.</span></label><input type="number" min="0" step=".01" name="spouse_fed_ytd" id="spouseFedYtd"></div><div class="field"><label>How much state income tax has been withheld from your spouse's pay so far this year?</label><input type="number" min="0" step=".01" name="spouse_state_ytd" id="spouseStateYtd"></div></div>
+
+<div class="card"><h2>11. Your pay schedule</h2><div class="field"><label>How often are you paid?</label><select id="frequency" name="pay_frequency" required><option value="">Choose...</option><option value="52">Weekly</option><option value="26">Biweekly</option><option value="24">Twice monthly</option><option value="12">Monthly</option></select></div><div class="field"><label>How many paychecks have you received so far this year?</label><input type="number" min="1" max="52" id="received" name="paychecks_received" required></div><div class="field"><label>How many paychecks do you have left this year?</label><input type="number" min="1" max="52" id="remaining" name="paychecks_remaining" required></div></div>
+<div id="spouseScheduleCard" class="card hidden"><h2>12. Your spouse's pay schedule</h2><div class="field"><label>How often is your spouse paid?</label><select id="spouseFrequency" name="spouse_pay_frequency"><option value="">Choose...</option><option value="52">Weekly</option><option value="26">Biweekly</option><option value="24">Twice monthly</option><option value="12">Monthly</option></select></div><div class="field"><label>How many paychecks has your spouse received so far this year?</label><input type="number" min="1" max="52" id="spouseReceived" name="spouse_paychecks_received"></div><div class="field"><label>How many paychecks does your spouse have left this year?</label><input type="number" min="1" max="52" id="spouseRemaining" name="spouse_paychecks_remaining"></div></div>
+<input type="hidden" id="annualWages" value="0"><input type="hidden" id="spouseAnnualWages" value="0"><input type="hidden" id="otherIncome" value="0"><input type="hidden" id="adjustments" value="0"><input type="hidden" id="itemized" value="0"><input type="hidden" id="deductionType" value="standard"><input type="hidden" id="targetGross" value="0"><input type="hidden" id="targetFed" value="0"><input type="hidden" id="targetState" value="0"><input type="hidden" id="spouseCurrentFed" value="0"><input type="hidden" id="spouseCurrentState" value="0"><input type="hidden" id="otherFutureFed" value="0"><input type="hidden" id="otherFutureState" value="0">
+<div class="card"><h2>18. Anything else we should know?</h2><div class="field"><label>Is there anything else about your tax situation or the result you're hoping for that LT Tax Co. should know?</label><textarea id="clientNotes" name="client_notes" rows="6" placeholder="Tell us anything you think may matter, including a job change, unusual income, or a specific result you are hoping for. You do not need to know tax-form names or credit amounts."></textarea><div class="small">Please do not enter Social Security numbers, account numbers, or upload tax documents here.</div></div></div>
+<div class="actions hidden"><button class="btn" type="button" id="calcBtn">Calculate My Preliminary Check</button></div><div id="wizardNav" class="wizard-nav"><button class="btn secondary" type="button" id="wizardBack">Back</button><button class="btn" type="button" id="wizardNext">Next</button></div><div id="wizardProgress" class="wizard-progress"></div><div id="resultBox" class="hidden"></div>
+<div id="submitCard" class="card hidden"><h2>Send to LT Tax Co. for Review</h2><p>LT Tax Co. will review your information and prepare an example federal W-4 and applicable state withholding form for you at no cost. We’ll email your example back to you after review.</p><label class="choice"><input type="checkbox" id="certify" required><span>I confirm that the information I entered is complete and truthful to the best of my knowledge. I understand that withholding results can change if my income, household, deductions, credits, tax law, or other circumstances change, and LT Tax Co. cannot guarantee a specific refund or amount due.</span></label><div class="actions" style="margin-top:16px"><button class="btn" type="submit">Send for Professional Review</button></div><p id="sendStatus"></p></div></form>
+</div></main><footer><div class="wrap"><strong>LT Tax Co.</strong> &nbsp; | &nbsp; <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div></footer>
+<script>
+const ACCESS='c177d554-ddf8-468f-b647-8dc9067ddc10';let last=null;
+const goalEls=()=>[...document.querySelectorAll('input[name=goal]')];
+goalEls().forEach(x=>x.addEventListener('change',()=>{document.getElementById('priorOutcome').classList.remove('hidden')}));
+document.getElementById('lastResult').addEventListener('change',e=>{const show=['refund','owed'].includes(e.target.value);document.getElementById('lastAmountWrap').classList.toggle('hidden',!show);document.getElementById('lastAmountLabel').textContent=e.target.value==='refund'?'About how much was your federal refund?':'About how much did you owe federally?'});
+const $=id=>document.getElementById(id), n=id=>Number($(id).value||0), money=x=>'$'+Math.round(x).toLocaleString();
+
+$('hasDependents').addEventListener('change',()=>{const yes=$('hasDependents').value==='yes';$('dependentsWrap').classList.toggle('hidden',!yes);$('dependentCount').required=yes;$('dependent17Plus').required=yes;if(!yes){$('dependentCount').value='1';$('dependent17Plus').value='';}setTimeout(()=>renderWizard(wizardCurrent),0)});
+function fedTax(t,status){t=Math.max(0,t);if(status==='qss')status='mfj';const B={single:[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[640600,.35],[Infinity,.37]],mfs:[[12400,.10],[50400,.12],[105700,.22],[201775,.24],[256225,.32],[384350,.35],[Infinity,.37]],mfj:[[24800,.10],[100800,.12],[211400,.22],[403550,.24],[512450,.32],[768700,.35],[Infinity,.37]],hoh:[[17700,.10],[67450,.12],[105700,.22],[201750,.24],[256200,.32],[640600,.35],[Infinity,.37]]}[status];let tax=0,lo=0;for(const [hi,r] of B){tax+=Math.max(0,Math.min(t,hi)-lo)*r;if(t<=hi)break;lo=hi}return tax}
+function standard(status){return {single:16100,mfs:16100,mfj:32200,qss:32200,hoh:24150}[status]||16100}
+function calcStateTax(state,agi,status,children,otherDeps){agi=Math.max(0,agi);const people=(status==='mfj'?2:1)+children+otherDeps;if(state==='IL')return Math.max(0,(agi-2925*people)*.0495);if(state==='MI')return Math.max(0,(agi-5900*people)*.0425);if(state==='IA'){const ded=standard(status);return Math.max(0,agi-ded)*.038}if(state==='MN'){const sd={single:15300,mfs:15300,mfj:30600,hoh:23000}[status]||15300;let ti=Math.max(0,agi-sd-5300*(children+otherDeps));const br={single:[[33310,.0535],[109430,.068],[203150,.0785],[Infinity,.0985]],mfs:[[24350,.0535],[96740,.068],[168965,.0785],[Infinity,.0985]],mfj:[[48700,.0535],[193480,.068],[337930,.0785],[Infinity,.0985]],hoh:[[41010,.0535],[164800,.068],[270060,.0785],[Infinity,.0985]]}[status];let tax=0,lo=0;for(const [hi,r] of br){tax+=Math.max(0,Math.min(ti,hi)-lo)*r;if(ti<=hi)break;lo=hi}return tax}if(state==='WI'){/* preliminary full-year resident estimate using 2026 rate schedules; standard deduction/credits require professional review */let ti=Math.max(0,agi-standard(status));const br=(status==='mfj'?[[20140,.035],[69270,.044],[443620,.053],[Infinity,.0765]]:status==='mfs'?[[10070,.035],[34640,.044],[221810,.053],[Infinity,.0765]]:[[15110,.035],[51950,.044],[332720,.053],[Infinity,.0765]]);let tax=0,lo=0;for(const [hi,r] of br){tax+=Math.max(0,Math.min(ti,hi)-lo)*r;if(ti<=hi)break;lo=hi}return tax}return 0}
+function stateForm(state){return {WI:'Wisconsin Form WT-4',IL:'Illinois Form IL-W-4',IA:'Iowa Form IA W-4',MN:'Minnesota Form W-4MN',MI:'Michigan Form MI-W4'}[state]}
+function stateStatusLabel(state,status,spouseJobs){
+ if(state==='WI') return status==='mfj'?'Married':status==='mfs'?'Married, but withhold at higher Single rate':'Single';
+ if(state==='MN') return status==='mfj'?'Married':status==='mfs'?'Married, but withhold at higher Single rate':'Single';
+ if(state==='IA') return status==='hoh'?'Head of Household':(status==='mfj'&&spouseJobs===0?'Married jointly and spouse having no earned income / qualifying surviving spouse':'Other');
+ return '';
+}
+function wiWithhold(gross,freq,status,exemptions){
+ const annual=gross*freq, married=status==='mfj'; let d=0;
+ if(married){d=annual<25727?9461:annual>=73032?0:9461-.20*(annual-25727)}
+ else {d=annual<17780?6702:annual>=73630?0:6702-.12*(annual-17780)}
+ const net=Math.max(0,annual-d-exemptions*400); let tax=0;
+ if(net<=12760)tax=net*.0354;else if(net<=25520)tax=451.70+(net-12760)*.0465;else if(net<=280950)tax=1045.04+(net-25520)*.053;else tax=14582.83+(net-280950)*.0765;
+ return tax/freq;
+}
+function ilWithhold(gross,freq,basic,additional){return Math.max(0,(gross-basic*2925/freq-additional*1000/freq)*.0495)}
+function miWithhold(gross,freq,exemptions){return Math.max(0,(gross-exemptions*5900/freq)*.0425)}
+function mnWithhold(gross,freq,married,allowances){
+ const annual=Math.max(0,gross*freq-allowances*5300); if(annual<=0)return 0; let tax=0;
+ if(married){if(annual<=14700)return 0; if(annual<=63400)tax=(annual-14700)*.0535;else if(annual<=208180)tax=2605.45+(annual-63400)*.068;else if(annual<=352630)tax=12450.49+(annual-208180)*.0785;else tax=23789.82+(annual-352630)*.0985}
+ else {if(annual<=4700)return 0;if(annual<=38010)tax=(annual-4700)*.0535;else if(annual<=114130)tax=1782.09+(annual-38010)*.068;else if(annual<=207850)tax=6958.25+(annual-114130)*.0785;else tax=14315.27+(annual-207850)*.0985}
+ return tax/freq;
+}
+function iaWithhold(gross,freq,status,spouseJobs,allowanceDollars){
+ let annualDed=13000;if(status==='hoh')annualDed=19500;else if(status==='mfj'&&spouseJobs===0)annualDed=26000;
+ return Math.max(0,(gross-annualDed/freq)*.038-allowanceDollars/freq);
+}
+function getStateSuggestion(state,status,children,otherDeps,stateTargetPer){
+ const deps=children+otherDeps, dependent=$('claimedDependent').value==='yes', self=dependent?0:1, jobs=n('jobCount'), spouseJobs=n('spouseJobCount');
+ const married=status==='mfj'||status==='mfs', spouseAllowance=(married&&spouseJobs===0)?1:0, age=$('age65').value==='yes', blind=$('blind').value==='yes', sAge=$('spouseAge65').value==='yes', sBlind=$('spouseBlind').value==='yes', gross=(n('received')?n('wagesYtd')/n('received'):0), freq=Number($('frequency').value);
+ let lines=[], base=0, extra=0, note='';
+ if(state==='WI'){
+   const ex=self+spouseAllowance+deps;base=wiWithhold(gross,freq,status,ex);extra=Math.max(0,stateTargetPer-base);
+   lines=[`Withholding status: ${stateStatusLabel(state,status,spouseJobs)}`,`Line 1(a) yourself: ${self}`,`Line 1(b) spouse: ${spouseAllowance}`,`Line 1(c) dependents: ${deps}`,`Line 1(d) estimated total exemptions: ${ex}`,`Line 2 estimated additional withholding: $${extra.toFixed(2)} per paycheck`,`Line 3 Exempt: Do not select based on this checker`];
+   if(stateTargetPer<base-.5)note='Target withholding is below the estimate produced using the maximum exemptions identified here. Review whether Form WT-4A or another Wisconsin adjustment is appropriate.';
+ }
+ if(state==='IL'){
+   const basic=self+spouseAllowance+deps;let add=(age?1:0)+(blind?1:0)+((married&&sAge)?1:0)+((married&&sBlind)?1:0);base=ilWithhold(gross,freq,basic,add);extra=Math.max(0,stateTargetPer-base);
+   lines=[`Line 1 estimated basic allowances: ${basic}`,`Line 2 estimated additional allowances: ${add}`,`Line 3 estimated additional withholding: $${extra.toFixed(2)} per paycheck`,`Exempt box: Do not select based on this checker`];
+   note='Illinois Line 2 can also be affected by deduction/subtraction worksheet items. Review those before preparing the example.';
+ }
+ if(state==='MI'){
+   const ex=self+spouseAllowance+deps;base=miWithhold(gross,freq,ex);extra=Math.max(0,stateTargetPer-base);
+   lines=[`Line 6 estimated personal/dependent exemptions: ${ex}`,`Line 7 estimated additional withholding: $${extra.toFixed(2)} per paycheck`,`Line 8 exemption boxes: Do not select based on this checker`];
+   if(stateTargetPer<base-.5)note='Target withholding is below the estimate produced using the identified Michigan exemptions; review before changing the form.';
+ }
+ if(state==='MN'){
+   const A=self;const B=(jobs===1&&(!married||spouseJobs===0))?1:0;const C=(married&&spouseJobs===0&&jobs===1)?1:0;const D=deps;const E=status==='hoh'?1:0;const allowances=A+B+C+D+E;base=mnWithhold(gross,freq,status==='mfj',allowances);extra=Math.max(0,stateTargetPer-base);
+   lines=[`Marital status: ${stateStatusLabel(state,status,spouseJobs)}`,`Section 1 A: ${A}`,`Section 1 B: ${B}`,`Section 1 C: ${C}`,`Section 1 D dependents: ${D}`,`Section 1 E Head of Household: ${E}`,`Line 1 estimated Minnesota allowances: ${allowances}`,`Line 2 estimated additional withholding: $${extra.toFixed(2)} per paycheck`];
+   note='Minnesota itemized-deduction/additional-income worksheet amounts are not automatically added here and should be checked during review.';
+ }
+ if(state==='IA'){
+   let l1=(status==='hoh'?80:self*40)+spouseAllowance*40+(age?20:0)+(blind?20:0)+((married&&sAge&&spouseJobs===0)?20:0)+((married&&sBlind&&spouseJobs===0)?20:0);const l2=deps*40;const l4=Math.round(n('adjustments')/15);const total=l1+l2+l4;base=iaWithhold(gross,freq,status,spouseJobs,total);extra=Math.max(0,stateTargetPer-base);
+   lines=[`Marital status: ${stateStatusLabel(state,status,spouseJobs)}`,`Line 1 estimated personal allowances: $${l1.toFixed(2)}`,`Line 2 dependent allowances: $${l2.toFixed(2)}`,`Line 3 itemized-deduction allowance: Review manually`, `Line 4 estimated adjustment-to-income allowance: $${l4.toFixed(2)}`,`Line 5 child/dependent-care allowance: Review manually`,`Line 6 subtotal used by checker (before Lines 3/5): $${total.toFixed(2)}`,`Estimated additional withholding to request: $${extra.toFixed(2)} per paycheck`];
+   note='Iowa Lines 3 and 5 require worksheet-specific information that this checker does not yet collect, so the subtotal is intentionally incomplete until LT review.';
+ }
+ return {lines,base,extra,note};
+}
+
+function statePairInfo(){
+ const resident=$('state').value, different=$('workDifferent').value==='yes', work=different?$('workState').value:resident;
+ const reciprocalPairs=new Set(['WI-IL','IL-WI','WI-MI','MI-WI','IL-IA','IA-IL','IL-MI','MI-IL','MN-MI','MI-MN']);
+ const reciprocal=resident&&work&&resident!==work&&reciprocalPairs.has(resident+'-'+work);
+ const wiMn=(resident==='WI'&&work==='MN')||(resident==='MN'&&work==='WI');
+ let payrollState=resident, note='Resident and work state are the same.';
+ if(resident!==work){
+   if(reciprocal){payrollState=resident;note=`Reciprocity applies to employee wages between ${resident} and ${work}; review the work-state nonresident/reciprocity certificate and resident-state withholding.`}
+   else {payrollState=work;note=`No wage reciprocity is built for ${resident}/${work}; primary payroll withholding is reviewed under ${work}, with a resident-state credit/additional-payment review for ${resident}.`}
+   if(wiMn){payrollState=work;note='Wisconsin and Minnesota do not have reciprocity. Withholding generally follows the work state; resident-state credit/estimated-tax treatment must be reviewed.'}
+ }
+ return {resident,work,payrollState,reciprocal,note};
+}
+function stateReciprocityForm(resident,work){
+ if(resident===work)return 'None';
+ if(work==='WI'&&['IL','MI'].includes(resident))return 'Wisconsin Form W-220';
+ if(work==='IL'&&['WI','IA','MI'].includes(resident))return 'Illinois Form IL-W-5-NR';
+ if(work==='MI'&&['WI','IL','MN'].includes(resident))return 'Michigan MI-W4 — reciprocal-state exemption on Line 8b';
+ if(work==='MN'&&resident==='MI')return 'Minnesota Form MWR (reciprocity exemption)';
+ if(work==='IA'&&resident==='IL')return 'Iowa reciprocity/nonresident withholding exemption — verify current employer certificate';
+ return 'None / no reciprocity in this five-state module';
+}
+function calculate(){
+ if(!validateWizardAnswers())return;
+ const goal=document.querySelector('input[name=goal]:checked').value,status=$('status').value,state=$('state').value,pair=statePairInfo(),payrollState=pair.payrollState;
+ const hasDeps=$('hasDependents').value==='yes', depCount=hasDeps?n('dependentCount'):0, any17=hasDeps&&$('dependent17Plus').value==='yes';
+ // Conservative dependent math: when any dependent is 17+, do not guess the child/other-dependent split. Flag it for LT review instead.
+ const depCredit=(hasDeps&&!any17)?depCount*2200:0;
+ const received=n('received'),remaining=n('remaining'),freq=Number($('frequency').value),clientWagesYtd=n('wagesYtd');
+ const clientWages=received>0?clientWagesYtd*(received+remaining)/received:clientWagesYtd;
+ const spouseW2=$('spouseWorkType').value==='w2',sReceived=spouseW2?n('spouseReceived'):0,sRemaining=spouseW2?n('spouseRemaining'):0;
+ const spouseWages=spouseW2&&sReceived>0?n('spouseWagesYtd')*(sReceived+sRemaining)/sReceived:0;
+ const wages=clientWages+spouseWages,agi=Math.max(0,wages),ded=standard(status),taxable=Math.max(0,agi-ded),liability=Math.max(0,fedTax(taxable,status)-depCredit);
+ const fedY=n('fedYtd')+(spouseW2?n('spouseFedYtd'):0),lastResult=$('lastResult').value,lastAmount=n('lastAmount');
+ let desiredRefund=0;if(goal==='more')desiredRefund=(lastResult==='refund'?lastAmount+500:500);else if(goal==='even')desiredRefund=0;else desiredRefund=-100;
+ const desiredTotal=Math.max(0,liability+desiredRefund),neededAll=Math.max(0,desiredTotal-fedY);
+ const clientShare=wages>0?clientWages/wages:1,neededTarget=spouseW2?neededAll*clientShare:neededAll,per=remaining?neededTarget/remaining:0;
+ const currentAvgFed=received?n('fedYtd')/received:0,delta=per-currentAvgFed;
+ let step3=0,step4c=0;if(delta>=0)step4c=delta;else step3=Math.abs(delta)*freq;
+ const stateLiab=calcStateTax(payrollState,agi,status,0,depCount),stateYTotal=n('stateYtd')+(spouseW2?n('spouseStateYtd'):0),stateNeed=Math.max(0,stateLiab-stateYTotal),stateClientNeed=spouseW2?stateNeed*clientShare:stateNeed,statePer=remaining?stateClientNeed/remaining:0,currentAvgState=received?n('stateYtd')/received:0,stateDelta=statePer-currentAvgState,stateSuggestion=getStateSuggestion(payrollState,status,0,depCount,statePer);
+ // YTD sanity check only. This NEVER changes the calculation.
+ const baselineLiability=Math.max(0,fedTax(Math.max(0,agi-standard(status)),status));
+ const totalChecks=(received+remaining)+(spouseW2?(sReceived+sRemaining):0),checksElapsed=received+(spouseW2?sReceived:0),expectedYtd=totalChecks>0?baselineLiability*(checksElapsed/totalChecks):0;
+ const withholdingGap=expectedYtd-fedY;
+ let w4Flag='No material possible W-4 credit/adjustment pattern detected from the YTD comparison.';
+ if(expectedYtd>0 && withholdingGap>Math.max(250,expectedYtd*.20)){
+   w4Flag=hasDeps?'POSSIBLE CURRENT W-4 CREDIT/OTHER ADJUSTMENT: YTD federal withholding is materially below the no-Step-3 baseline. Dependents were reported, but do not assume they explain the difference; verify the current W-4.':'STRONG REVIEW FLAG: Client reported no dependents, but YTD federal withholding is materially below the no-Step-3 baseline. A current W-4 Step 3 amount or another withholding adjustment may be in play. Verify the current W-4.';
+ }
+ const clientNotes=$('clientNotes').value.trim();
+ last={goal,status,state,pair,payrollState,hasDeps,depCount,any17,depCredit,clientWages,spouseWages,wages,agi,ded,taxable,liability,fedY,received,remaining,freq,sReceived,sRemaining,lastResult,lastAmount,desiredRefund,desiredTotal,neededTarget,per,current:currentAvgFed,delta,step3,step4c,stateLiab,stateYTotal,stateNeed,statePer,stateDelta,stateSuggestion,clientNotes,expectedYtd,withholdingGap,w4Flag};
+ const caution=clientNotes?`<div class="warning"><strong>Extra information received:</strong> LT Tax Co. will review the details you provided before preparing your example.</div>`:'';
+ $('resultBox').innerHTML=`<div class="result"><h2>Ready for LT Tax Co. review</h2><p>Your W-4 check is ready to send to LT Tax Co. for review.</p><p>LT Tax Co. will review the information you provided and prepare an example federal W-4 and applicable state withholding form for you <strong>for free</strong>.</p></div>${caution}<p class="small">Withholding estimates can change when income, filing status, deductions, credits, or tax law changes.</p>`;
+ $('resultBox').classList.remove('hidden');$('submitCard').classList.remove('hidden');$('resultBox').scrollIntoView({behavior:'smooth',block:'start'});
+}
+// Small-screen wizard: each card is one screen and contains no more than 3 related questions.
+// Conditional screens appear only when the client's answers make them relevant.
+const wizardCards=[...document.querySelectorAll('#w4Form > .card')].filter(c=>c.id!=='submitCard');
+let wizardCurrent=wizardCards[0]||null;
+
+function isConditionallyAvailable(card){
+  return !card.classList.contains('hidden');
+}
+function availableWizardCards(){
+  return wizardCards.filter(isConditionallyAvailable);
+}
+function visibleControls(card){
+  return [...card.querySelectorAll('input,select,textarea')].filter(c=>{
+    if(c.disabled) return false;
+    const hiddenParent=c.closest('.hidden');
+    return !hiddenParent;
+  });
+}
+function validateCard(card){
+  const controls=visibleControls(card);
+  const checkedRadioNames=new Set();
+  for(const c of controls){
+    if(c.type==='radio'&&c.required){
+      if(checkedRadioNames.has(c.name)) continue;
+      checkedRadioNames.add(c.name);
+      const group=controls.filter(x=>x.type==='radio'&&x.name===c.name);
+      if(!group.some(x=>x.checked)){c.reportValidity();return false}
+    } else if(!c.checkValidity()){
+      c.reportValidity();return false;
+    }
+  }
+  return true;
+}
+function validateWizardAnswers(){
+  for(const card of availableWizardCards()) if(!validateCard(card)) return false;
+  return true;
+}
+function renderWizard(target){
+  const available=availableWizardCards();
+  if(!available.length)return;
+  let idx=available.indexOf(target);
+  if(idx<0){
+    const allIndex=wizardCards.indexOf(target);
+    idx=available.findIndex(c=>wizardCards.indexOf(c)>=allIndex);
+    if(idx<0)idx=available.length-1;
+  }
+  wizardCurrent=available[idx];
+  wizardCards.forEach(c=>c.classList.add('wizard-card-off'));
+  wizardCurrent.classList.remove('wizard-card-off');
+  $('wizardBack').style.visibility=idx===0?'hidden':'visible';
+  $('wizardNext').textContent=idx===available.length-1?'Calculate My Preliminary Check':'Next';
+  $('wizardProgress').textContent=`Step ${idx+1} of ${available.length}`;
+  wizardCurrent.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+$('wizardNext').addEventListener('click',()=>{
+  if(!wizardCurrent||!validateCard(wizardCurrent))return;
+  const available=availableWizardCards();
+  const idx=available.indexOf(wizardCurrent);
+  if(idx===available.length-1){calculate();return}
+  renderWizard(available[idx+1]);
+});
+$('wizardBack').addEventListener('click',()=>{
+  const available=availableWizardCards();
+  const idx=available.indexOf(wizardCurrent);
+  if(idx>0)renderWizard(available[idx-1]);
+});
+
+// Recalculate the route when an answer adds/removes a conditional screen.
+$('lastResult').addEventListener('change',()=>setTimeout(()=>renderWizard(wizardCurrent),0));
+$('workDifferent').addEventListener('change',()=>{const yes=$('workDifferent').value==='yes';$('workStateWrap').classList.toggle('hidden',!yes);$('workState').required=yes;if(!yes)$('workState').value='';setTimeout(()=>renderWizard(wizardCurrent),0)});
+$('status').addEventListener('change',()=>{const mfj=$('status').value==='mfj';$('spouseWorkWrap').classList.toggle('hidden',!mfj);$('spouseWorkType').required=mfj;$('spouseStateCard').classList.toggle('hidden',!mfj);if(!mfj){$('spouseWorkType').value='';$('spouseJobCount').value='0';['spouseYtdCard','spouseScheduleCard'].forEach(id=>$(id).classList.add('hidden'))}setTimeout(()=>renderWizard(wizardCurrent),0)});
+$('spouseWorkType').addEventListener('change',()=>{const w2=$('spouseWorkType').value==='w2';$('spouseJobCount').value=w2?'1':'0';['spouseYtdCard','spouseScheduleCard'].forEach(id=>$(id).classList.toggle('hidden',!w2));['spouseWagesYtd','spouseFedYtd','spouseStateYtd','spouseFrequency','spouseReceived','spouseRemaining'].forEach(id=>$(id).required=w2);setTimeout(()=>renderWizard(wizardCurrent),0)});
+goalEls().forEach(x=>x.addEventListener('change',()=>setTimeout(()=>renderWizard(wizardCurrent),0)));
+renderWizard(wizardCurrent);
+
+$('calcBtn').addEventListener('click',calculate);
+$('w4Form').addEventListener('submit',async e=>{e.preventDefault();if(!last){calculate();if(!last)return}if(!$('certify').checked){$('sendStatus').textContent='Please confirm the accuracy statement before sending.';return}const fd=new FormData(e.target);
+ const goalText=last.goal==='more'?(last.lastResult==='refund'?`Last refund $${last.lastAmount.toFixed(2)} + $500 = target refund $${last.desiredRefund.toFixed(2)}`:`Target at least a $500 federal refund`):last.goal==='even'?'Target close to even':'Target about $100 federal balance due';
+ const multiFlag=(last.status==='mfj' && (n('jobCount')+n('spouseJobCount')>1))?'YES — multiple W-2 jobs reported; review federal multiple-jobs treatment.':'No MFJ multiple-job flag from answers';
+ const depText=last.hasDeps?`${last.depCount}; any age 17 or older: ${last.any17?'Yes':'No'}`:'No — no further dependent questions shown';
+ const creditFlag=last.hasDeps&&last.any17?'DEPENDENT CREDIT REVIEW REQUIRED: At least one dependent is age 17+. Checker intentionally did NOT guess the child-vs-other-dependent credit split.':'No age-17+ dependent split flag.';
+ const otherCreditFlag='OTHER CREDIT/TAX-ITEM FLAG: The checker intentionally did not ask about or calculate solar, education, Marketplace, childcare, EITC, or other non-dependent credits/items. Prior-year result or client notes may reflect items outside this calculation. Review before using the proposed entries.';
+ const review=`W-4 CHECKER — LT REVIEW SHEET\n\n=== CLIENT SELECTIONS TO VERIFY ===\nDesired outcome: ${goalText}\nLast federal return result: ${last.lastResult||'Not provided'}${last.lastResult==='refund'||last.lastResult==='owed'?' — $'+last.lastAmount.toFixed(2):''}\nFiling status: ${last.status}\nResident state: ${last.pair.resident}\nWork state: ${last.pair.work}\nPrimary state withholding module used: ${last.payrollState}\nCross-state treatment: ${last.pair.note}\nReciprocity/exemption form to review: ${stateReciprocityForm(last.pair.resident,last.pair.work)}\nDependents: ${depText}\n${creditFlag}\n${otherCreditFlag}\nClient W-2 job count: ${n('jobCount')}\nSpouse work selection: ${$('spouseWorkType').value||'Not applicable'}\nMULTIPLE-JOBS REVIEW: ${multiFlag}\n\n=== CLIENT PAYSTUB DATA ===\nClient W-2 wages YTD: $${n('wagesYtd').toFixed(2)}\nClient federal withholding YTD: $${n('fedYtd').toFixed(2)}\nClient state withholding YTD: $${n('stateYtd').toFixed(2)}\nClient pay frequency: ${$('frequency').options[$('frequency').selectedIndex].text}\nClient checks received / remaining: ${last.received} / ${last.remaining}\n${$('spouseWorkType').value==='w2'?`Spouse W-2 wages YTD: $${n('spouseWagesYtd').toFixed(2)}\nSpouse federal withholding YTD: $${n('spouseFedYtd').toFixed(2)}\nSpouse state withholding YTD: $${n('spouseStateYtd').toFixed(2)}\nSpouse checks received / remaining: ${last.sReceived} / ${last.sRemaining}\n`:''}\n=== YTD W-4 SANITY CHECK — DOES NOT CHANGE MATH ===\nNo-Step-3 baseline expected federal withholding YTD (rough): $${last.expectedYtd.toFixed(2)}\nActual combined federal withholding YTD: $${last.fedY.toFixed(2)}\nDifference: $${last.withholdingGap.toFixed(2)}\n${last.w4Flag}\n\n=== FEDERAL CALCULATION TO VERIFY ===\nAnnualized client W-2 wages from YTD pace: $${last.clientWages.toFixed(2)}\nAnnualized spouse W-2 wages from YTD pace: $${last.spouseWages.toFixed(2)}\nEstimated AGI used: $${last.agi.toFixed(2)}\nStandard deduction used: $${last.ded.toFixed(2)}\nTaxable income used: $${last.taxable.toFixed(2)}\nDependent credit automatically used: $${last.depCredit.toFixed(2)}\nEstimated federal liability: $${last.liability.toFixed(2)}\nDesired refund/balance target: $${last.desiredRefund.toFixed(2)}\nRequired total federal withholding for target: $${last.desiredTotal.toFixed(2)}\nFederal withholding already YTD: $${last.fedY.toFixed(2)}\nCalculated target federal withholding per remaining CLIENT check: $${last.per.toFixed(2)}\nClient average federal withholding/check from YTD: $${last.current.toFixed(2)}\nCalculated change/check: ${last.delta>=0?'+':'-'}$${Math.abs(last.delta).toFixed(2)}\n\n=== PROPOSED FEDERAL W-4 — LT REVIEW ONLY ===\nStep 1(c): ${last.status}\nStep 2(c): REVIEW MULTIPLE-JOB FLAG; do not auto-check.\nStep 3 preliminary adjustment: $${last.step3.toFixed(2)}\nStep 4(a): $0 from checker — other income not collected; review client notes.\nStep 4(b): $0 from checker — standard deduction assumed.\nStep 4(c) preliminary additional withholding: $${last.step4c.toFixed(2)} per paycheck\n\n=== STATE FORM — LT REVIEW ONLY ===\nPrimary payroll form: ${stateForm(last.payrollState)}\nResident-state form: ${stateForm(last.pair.resident)}\nWork-state form: ${stateForm(last.pair.work)}\nReciprocity/exemption form: ${stateReciprocityForm(last.pair.resident,last.pair.work)}\nCross-state review: ${last.pair.note}\nPreliminary state liability estimate: $${last.stateLiab.toFixed(2)}\nCalculated target state withholding/client check: $${last.statePer.toFixed(2)}\nChange vs client YTD average state withholding/check: ${last.stateDelta>=0?'+':'-'}$${Math.abs(last.stateDelta).toFixed(2)}\n${last.stateSuggestion.lines.join('\n')}\n${last.stateSuggestion.note?'Review note: '+last.stateSuggestion.note:''}\n\n=== CLIENT NOTES ===\n${last.clientNotes||'None provided'}\n\n=== CLIENT CERTIFICATION ===\nClient certified information as complete/truthful to best of knowledge and acknowledged results can change and are not guaranteed.`;
+ fd.append('access_key',ACCESS);fd.append('subject','W-4 Checker Review Request');fd.append('from_name','LT Tax Co. Website');fd.append('form_type','W-4 Checker Professional Review');fd.append('calculation_and_example',review);fd.append('state_form_name',stateForm(last.payrollState));fd.append('client_certification','Confirmed');const btn=e.submitter;btn.disabled=true;btn.textContent='Sending...';$('sendStatus').textContent='';try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:fd});const j=await r.json();if(!j.success)throw new Error(j.message||'Submission failed');$('sendStatus').textContent='Sent! LT Tax Co. has received your W-4 Checker request for review.';btn.textContent='Sent';}catch(err){$('sendStatus').textContent='We could not send the request. Please try again.';btn.disabled=false;btn.textContent='Send for Professional Review'}});
+</script></body></html>

@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get Your Tax Prep Estimate | LT Tax Co.</title>
+<style>
+:root{
+  --burgundy:#5A0E1E; --burgundy-dark:#3f0914; --charcoal:#2E2E2E;
+  --silver:#D9D9D9; --cream:#fbf7ef; --cream-2:#f5eee3; --white:#fffdf9;
+  --border:#dfd4c6;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--charcoal);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+.wrap{width:min(900px,calc(100% - 36px));margin:auto}
+header{background:rgba(251,247,239,.98);border-bottom:1px solid #e8ded0}
+.nav{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:30px}
+.brand img{display:block;width:300px;max-width:48vw;height:auto}
+nav a{text-decoration:none;color:var(--charcoal);font-weight:700;font-size:.92rem}
+nav a:hover{color:var(--burgundy)}
+main{padding:58px 0 90px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--burgundy-dark)}
+h1{font-size:clamp(2.7rem,6vw,4.7rem);font-weight:500;line-height:1.05;margin:10px 0 22px}
+h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:500;margin:0 0 18px}
+.eyebrow{color:var(--burgundy);font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.lead{font-size:1.08rem;max-width:800px}
+.warning{background:var(--white);border-left:4px solid var(--burgundy);padding:18px 20px;margin:24px 0}
+.stage{display:none;background:var(--white);border:1px solid var(--border);padding:30px;border-radius:6px;margin-top:28px}
+.stage.active{display:block}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 24px}
+.field{margin:16px 0}
+label,.legend{display:block;font-weight:700;margin-bottom:7px}
+select,input[type="number"],input[type="text"],textarea{width:100%;padding:11px 12px;border:1px solid #cfc4b6;border-radius:4px;background:white;font:inherit}
+textarea{min-height:100px;resize:vertical}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+.check{display:flex;gap:9px;align-items:flex-start}
+.check input{margin-top:5px}
+.conditional{display:none;background:#faf6ef;border:1px solid #eadfd3;padding:18px;margin:14px 0}
+.conditional.show{display:block}
+.btn{display:inline-block;border:1px solid var(--burgundy);border-radius:4px;padding:12px 20px;font-weight:700;font:inherit;cursor:pointer;text-decoration:none}
+.primary{background:var(--burgundy);color:white}
+.secondary{background:transparent;color:var(--burgundy)}
+.controls{display:flex;gap:12px;justify-content:space-between;margin-top:28px;flex-wrap:wrap}
+.note{font-size:.92rem;color:#5c5651}
+.result{display:none;margin-top:28px;padding:32px;background:var(--white);border-top:4px solid var(--burgundy)}
+.result.show{display:block}
+.total{font-family:Georgia,"Times New Roman",serif;color:var(--burgundy);font-size:3.6rem;line-height:1;margin:12px 0 25px}
+.breakdown{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:15px 0;margin:20px 0}
+.row{display:flex;justify-content:space-between;gap:20px;padding:5px 0}
+.error{display:none;color:#7a081c;font-weight:700;margin-top:16px}
+footer{background:var(--charcoal);color:#f5eee3;padding:32px 0}
+footer a{color:white}
+@media(max-width:680px){
+  .nav{flex-direction:column;align-items:flex-start;padding:14px 0}
+  .brand img{width:260px;max-width:100%}
+  main{padding-top:38px}
+  .grid,.checks{grid-template-columns:1fr}
+  .stage{padding:22px}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="LT Tax Co. home"><img src="logo-horizontal.png" alt="LT Tax Co."></a>
+    <nav><a href="index.html">Back to Home</a></nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <div id="intro">
+    <div class="eyebrow">LT Tax Co.</div>
+    <h1>Get Your Tax Prep Estimate</h1>
+    <p class="lead">Answer a few questions about your expected tax return to get an estimated preparation fee from LT Tax Co.</p>
+    <p>Your estimate is based on the information you provide and is calculated using the <strong>low end of the expected preparation cost</strong>. It is intended to give you an idea of what your tax preparation may cost before getting started.</p>
+    <div class="warning"><strong>This estimate is not a guaranteed final price.</strong><br><br>
+      Your final fee may be higher if your return requires additional complexity, research or review, missing documentation or information must be obtained, or additional tax situations are identified during preparation.<br><br>
+      Returns requiring more than 2 hours of preparation may incur additional preparation fees at <strong>$50 per hour, prorated in 15-minute increments ($12.50 per 15 minutes).</strong>
+    </div>
+    <p>For the most accurate estimate, please include <strong>all income sources, tax documents, and tax situations you expect to report</strong>, even if you're unsure whether something affects your taxes.</p>
+    <button class="btn primary" onclick="startEstimate()">Start My Tax Prep Estimate</button>
+  </div>
+
+  <section class="stage" id="s1">
+    <h2>About Your Return</h2>
+    <p>Let's start with a few basics about the tax return you expect to file.</p>
+    <div class="grid">
+      <div class="field"><label for="filing">Expected filing status</label>
+        <select id="filing"><option value="">Choose one</option><option>Single</option><option>Married Filing Jointly</option><option>Married Filing Separately</option><option>Head of Household</option><option>Qualifying Surviving Spouse</option><option>Unsure</option></select>
+      </div>
+      <div class="field"><label for="deps">Dependents</label>
+        <select id="deps"><option value="">Choose one</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4+</option></select>
+      </div>
+      <div class="field"><label for="deduction">Expected deduction</label>
+        <select id="deduction"><option value="">Choose one</option><option value="standard">Standard deduction</option><option value="itemized">Itemized deductions</option><option value="unsure">Unsure</option></select>
+        <div class="note">If you're unsure, this estimate assumes the standard deduction. Your final fee may change if itemizing is appropriate.</div>
+      </div>
+    </div>
+    <div class="controls"><span></span><button class="btn primary" onclick="go(2)">Continue</button></div>
+  </section>
+
+  <section class="stage" id="s2">
+    <h2>Your Income</h2>
+    <p>Which types of income do you expect to report? Select everything that applies.</p>
+    <div class="checks" id="incomeChecks">
+      <label class="check"><input type="checkbox" data-inc="w2">W-2 employment income</label>
+      <label class="check"><input type="checkbox" data-inc="interest">Interest income</label>
+      <label class="check"><input type="checkbox" data-inc="dividend">Dividend income</label>
+      <label class="check"><input type="checkbox" data-inc="ssa">Social Security benefits</label>
+      <label class="check"><input type="checkbox" data-inc="retirement">Retirement or pension distributions</label>
+      <label class="check"><input type="checkbox" data-inc="unemployment">Unemployment income</label>
+      <label class="check"><input type="checkbox" data-inc="investments">Investments I sold</label>
+      <label class="check"><input type="checkbox" data-inc="selfemp">Self-employment or side-gig income</label>
+      <label class="check"><input type="checkbox" data-inc="rental">Rental property income</label>
+      <label class="check"><input type="checkbox" data-inc="royalty">Royalty income</label>
+      <label class="check"><input type="checkbox" data-inc="k1">K-1 income</label>
+      <label class="check"><input type="checkbox" data-inc="gambling">Gambling winnings</label>
+      <label class="check"><input type="checkbox" data-inc="crypto">Cryptocurrency transactions</label>
+      <label class="check"><input type="checkbox" data-inc="farm">Farm income</label>
+      <label class="check"><input type="checkbox" data-inc="debt">Cancellation of debt</label>
+      <label class="check"><input type="checkbox" data-inc="other">Other income or tax document not listed</label>
+    </div>
+    <p class="note"><strong>Don't leave something out just because you're unsure whether it's taxable.</strong> Select anything you expect to receive or report, and we'll account for it in your estimate.</p>
+
+    <div id="c-w2" class="conditional"><label>How many W-2s?</label><select id="w2count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5+</option></select></div>
+    <div id="c-interest" class="conditional grid"><div><label>How many 1099-INT forms?</label><select id="intcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Is total interest over $1,500?</label><select id="intover"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
+    <div id="c-dividend" class="conditional grid"><div><label>How many 1099-DIV forms?</label><select id="divcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Are total dividends over $1,500?</label><select id="divover"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
+    <div id="c-ssa" class="conditional grid"><div><label>How many SSA-1099 forms?</label><select id="ssacount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Railroad Retirement?</label><select id="railroad"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
+    <div id="c-retirement" class="conditional grid"><div><label>How many 1099-R forms?</label><select id="rcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Any early withdrawal?</label><select id="early"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
+    <div id="c-unemployment" class="conditional"><label>How many 1099-G unemployment forms?</label><select id="gcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div>
+    <div id="c-selfemp" class="conditional grid"><div><label>How many separate businesses or self-employment activities?</label><select id="bizcount"><option value="1">1</option><option value="2">2+</option></select></div><div><label>How many 1099-NEC/MISC forms?</label><select id="neccount"><option value="0">0</option><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div></div>
+    <div id="c-rental" class="conditional"><label>How many rental properties?</label><select id="rentalcount"><option value="1">1</option><option value="2">2+</option></select></div>
+    <div id="c-k1" class="conditional"><label>How many K-1s?</label><select id="k1count"><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></div>
+    <div id="c-gambling" class="conditional"><label>How many W-2G forms?</label><select id="wgcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div>
+    <div id="c-other" class="conditional"><label>Briefly describe the income or document</label><textarea id="othertext"></textarea></div>
+
+    <div class="controls"><button class="btn secondary" onclick="go(1)">Back</button><button class="btn primary" onclick="go(3)">Continue</button></div>
+  </section>
+
+  <section class="stage" id="s3">
+    <h2>Credits &amp; Other Tax Situations</h2>
+    <p>Select everything that applies.</p>
+    <div class="checks">
+      <label class="check"><input type="checkbox" id="childcare">Childcare expenses</label>
+      <label class="check"><input type="checkbox" id="education">College or other qualifying education expenses</label>
+      <label class="check"><input type="checkbox" id="studentloan">Student loan interest</label>
+      <label class="check"><input type="checkbox" id="hsa">HSA contributions or distributions</label>
+      <label class="check"><input type="checkbox" id="marketplace">Marketplace health insurance</label>
+      <label class="check"><input type="checkbox" id="boughthome">I bought a home</label>
+      <label class="check"><input type="checkbox" id="soldhome" onchange="toggleSold()">I sold my primary home</label>
+      <label class="check"><input type="checkbox" id="estimated">I made estimated tax payments</label>
+    </div>
+    <div id="soldExtra" class="conditional"><label>Do you expect to receive Form 1099-S for the home sale?</label><select id="homesale1099"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div>
+    <div class="controls"><button class="btn secondary" onclick="go(2)">Back</button><button class="btn primary" onclick="go(4)">Continue</button></div>
+  </section>
+
+  <section class="stage" id="s4">
+    <h2>State &amp; Local Returns</h2>
+    <div class="field"><label for="homeState">Home state</label>
+      <select id="homeState"><option value="">Choose one</option></select>
+    </div>
+    <div class="field"><label for="otherStates">Did you earn employee wages in any other states?</label>
+      <select id="otherStateYes" onchange="toggleStates()"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select>
+    </div>
+    <div id="stateExtra" class="conditional">
+      <label>Select the other state(s)</label>
+      <div id="stateChecks" class="checks"></div>
+      <p class="note">Reciprocity affects employee wage income only. Other out-of-state income may require individual review.</p>
+    </div>
+    <div class="field"><label>Do you expect to need a city or local income tax return?</label>
+      <select id="localNeed" onchange="toggleLocal()"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select>
+    </div>
+    <div id="localExtra" class="conditional"><label>How many city/local returns?</label><select id="localCount"><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></div>
+    <div class="controls"><button class="btn secondary" onclick="go(3)">Back</button><button class="btn primary" onclick="go(5)">Continue</button></div>
+  </section>
+
+  <section class="stage" id="s5">
+    <h2>Special Circumstances</h2>
+    <p>Do any of the following apply?</p>
+    <div class="checks">
+      <label class="check"><input type="checkbox" class="special" value="energy">Energy-efficient home improvements or residential clean energy expenses</label>
+      <label class="check"><input type="checkbox" class="special" value="foreign">Foreign income, foreign accounts, or foreign tax reporting</label>
+      <label class="check"><input type="checkbox" class="special" value="unlisted">Another tax situation that wasn't covered in this estimator</label>
+      <label class="check"><input type="checkbox" id="specialNone">None of these</label>
+    </div>
+    <div id="specialTextWrap" class="conditional"><label>Briefly explain</label><textarea id="specialText"></textarea></div>
+    <p class="note">Some situations require individual review before an accurate price can be estimated.</p>
+    <div class="controls"><button class="btn secondary" onclick="go(4)">Back</button><button class="btn primary" onclick="go(6)">Continue</button></div>
+  </section>
+
+  <section class="stage" id="s6">
+    <h2>Almost Done</h2>
+    <div class="field"><label>Will you have all tax documents and supporting information available when you complete intake?</label>
+      <select id="docsReady"><option value="yes">Yes</option><option value="no">No</option><option value="unsure">Unsure</option></select>
+      <p class="note">Complete information helps keep your fee within the estimated range. Additional fees may apply for missing information, follow-up, research, or review.</p>
+    </div>
+    <div id="bizReadyWrap" class="conditional">
+      <label>Will your business income, expenses, mileage/vehicle information, and supporting records be ready?</label>
+      <select id="bizReady"><option value="yes">Yes</option><option value="no">No</option><option value="unsure">Unsure</option></select>
+    </div>
+    <label class="check" style="margin-top:24px"><input type="checkbox" id="confirm">I confirm that I have included all income sources, tax documents, and tax situations that I currently expect to report.</label>
+    <p class="note">Leaving out information may result in an inaccurate estimate or a different final fee.</p>
+    <div class="error" id="confirmError">Please confirm that you've included everything you currently expect to report.</div>
+    <div class="controls"><button class="btn secondary" onclick="go(5)">Back</button><button class="btn primary" onclick="calculate()">Calculate My Tax Prep Estimate</button></div>
+  </section>
+
+  <div class="result" id="normalResult">
+    <div class="eyebrow">Your Estimated Tax Preparation Fee</div>
+    <div class="total" id="total">$0</div>
+    <h3>Estimate Breakdown</h3>
+    <div class="breakdown">
+      <div class="row"><span>Tax preparation</span><strong id="prep">$0</strong></div>
+      <div class="row"><span>Additional state return(s)</span><strong id="stateFee">$0</strong></div>
+      <div class="row"><span>City/local return(s)</span><strong id="localFee">$0</strong></div>
+      <div class="row"><strong>Estimated Total</strong><strong id="total2">$0</strong></div>
+    </div>
+    <p>This estimate represents the expected low end based on the information entered and is <strong>not a guaranteed final price.</strong></p>
+    <p>Your fee may increase for additional tax situations, complexity, missing or undisclosed information, documentation, research, or review.</p>
+    <p>Returns requiring more than 2 hours of preparation may incur additional preparation fees at <strong>$50 per hour, prorated in 15-minute increments ($12.50 per 15 minutes).</strong></p>
+    <p>If information is expected to significantly change your estimate, LT Tax Co. will discuss the price change before additional work is completed.</p>
+    <div id="portalQuestion" style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border)">
+      <h3>Do you want to request a client portal?</h3>
+      <div class="controls" style="justify-content:flex-start">
+        <button class="btn primary" type="button" onclick="requestPortal()">Yes</button>
+        <button class="btn secondary" type="button" onclick="declinePortal()">No</button>
+      </div>
+      <p id="portalNoMessage" style="display:none;margin-top:20px;font-weight:700">Not a problem! Shopping around is smart! We hope to see you back here again. :)</p>
+    </div>
+  </div>
+
+  <div class="result" id="manualResult">
+    <h2>Let's Take a Closer Look</h2>
+    <p>Based on the information entered, your situation may require additional review before an accurate preparation fee can be estimated. Rather than give you an inaccurate estimate, LT Tax Co. can review your situation individually.</p>
+    <div id="manualRequestQuestion" style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border)">
+      <h3>Do you want to send your estimate request to LT Tax Co. and have a professional reach out to you?</h3>
+      <div class="controls" style="justify-content:flex-start">
+        <button class="btn primary" type="button" onclick="requestManualReview()">Yes</button>
+        <button class="btn secondary" type="button" onclick="declineManualReview()">No</button>
+      </div>
+      <p id="manualNoMessage" style="display:none;margin-top:20px;font-weight:700">Not a problem! Shopping around is smart! We hope to see you back here again. :)</p>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer><div class="wrap"><strong>LT Tax Co.</strong> &nbsp; | &nbsp; <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div></footer>
+
+<script>
+const states=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
+
+// Current launch-state reciprocity pairs verified against official state guidance.
+// These cover the initial LT Tax Co. state setup focus (WI, IL, MI, MN).
+const reciprocalPairs = new Set([
+ "Illinois|Wisconsin","Indiana|Wisconsin","Kentucky|Wisconsin","Michigan|Wisconsin",
+ "Illinois|Iowa","Illinois|Kentucky","Illinois|Michigan",
+ "Michigan|Indiana","Kentucky|Michigan","Michigan|Minnesota","Michigan|Ohio",
+ "Michigan|Wisconsin","Minnesota|North Dakota"
+].map(x=>x.split("|").sort().join("|")));
+
+const home=document.getElementById("homeState");
+states.forEach(s=>home.add(new Option(s,s)));
+const sc=document.getElementById("stateChecks");
+states.forEach(s=>{
+  const l=document.createElement("label"); l.className="check";
+  l.innerHTML=`<input type="checkbox" class="otherState" value="${s}">${s}`;
+  sc.appendChild(l);
+});
+
+document.querySelectorAll("[data-inc]").forEach(cb=>{
+  cb.addEventListener("change",()=>{
+    const box=document.getElementById("c-"+cb.dataset.inc);
+    if(box) box.classList.toggle("show",cb.checked);
+    document.getElementById("bizReadyWrap").classList.toggle("show",document.querySelector('[data-inc="selfemp"]').checked);
+  });
+});
+document.querySelectorAll(".special").forEach(cb=>cb.addEventListener("change",()=>{
+  if(cb.checked) document.getElementById("specialNone").checked=false;
+  showSpecialText();
+}));
+document.getElementById("specialNone").addEventListener("change",e=>{
+  if(e.target.checked) document.querySelectorAll(".special").forEach(x=>x.checked=false);
+  showSpecialText();
+});
+function showSpecialText(){document.getElementById("specialTextWrap").classList.toggle("show",[...document.querySelectorAll(".special")].some(x=>x.checked));}
+function toggleSold(){document.getElementById("soldExtra").classList.toggle("show",document.getElementById("soldhome").checked);}
+function toggleStates(){document.getElementById("stateExtra").classList.toggle("show",document.getElementById("otherStateYes").value==="yes");}
+function toggleLocal(){document.getElementById("localExtra").classList.toggle("show",document.getElementById("localNeed").value==="yes");}
+function startEstimate(){sessionStorage.removeItem("ltTaxEstimate");document.getElementById("intro").style.display="none";go(1);}
+function go(n){document.querySelectorAll(".stage").forEach(x=>x.classList.remove("active"));document.getElementById("s"+n).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});}
+function selected(name){return document.querySelector(`[data-inc="${name}"]`)?.checked}
+function val(id){return document.getElementById(id)?.value}
+function num(id){return parseInt(val(id)||0,10)}
+function money(n){return "$"+n.toFixed(2).replace(".00","")}
+function pair(a,b){return [a,b].sort().join("|")}
+
+function labelTextFor(el){
+  const label=el.closest('label') || (el.id ? document.querySelector(`label[for="${el.id}"]`) : null);
+  return label ? label.textContent.replace(/\s+/g,' ').trim() : (el.id || 'Selection');
+}
+function selectedText(id){
+  const el=document.getElementById(id); if(!el) return '';
+  return el.options ? el.options[el.selectedIndex].text : el.value;
+}
+function buildEstimatorSummary(total){
+  const lines=[];
+  lines.push(`Filing status: ${selectedText('filing')}`);
+  lines.push(`Dependents: ${selectedText('deps')}`);
+  lines.push(`Expected deduction: ${selectedText('deduction')}`);
+  const incomes=[...document.querySelectorAll('[data-inc]:checked')];
+  lines.push(`Income selected: ${incomes.length ? incomes.map(labelTextFor).join('; ') : 'None selected'}`);
+  const detailMap={w2:['w2count'],interest:['intcount','intover'],dividend:['divcount','divover'],ssa:['ssacount','railroad'],retirement:['rcount','early'],unemployment:['gcount'],selfemp:['bizcount','neccount'],rental:['rentalcount'],k1:['k1count'],gambling:['wgcount']};
+  incomes.forEach(cb=>(detailMap[cb.dataset.inc]||[]).forEach(id=>{
+    const el=document.getElementById(id); if(el) lines.push(`${labelTextFor(el)}: ${selectedText(id)}`);
+  }));
+  const situations=['childcare','education','studentloan','hsa','marketplace','boughthome','soldhome','estimated'];
+  const chosen=situations.map(id=>document.getElementById(id)).filter(x=>x&&x.checked);
+  lines.push(`Credits / other situations: ${chosen.length ? chosen.map(labelTextFor).join('; ') : 'None selected'}`);
+  if(document.getElementById('soldhome').checked) lines.push(`Expected Form 1099-S: ${selectedText('homesale1099')}`);
+  lines.push(`Home state: ${selectedText('homeState')}`);
+  lines.push(`Employee wages in other states: ${selectedText('otherStateYes')}`);
+  if(val('otherStateYes')==='yes'){
+    const os=[...document.querySelectorAll('.otherState:checked')].map(x=>x.value);
+    lines.push(`Other states selected: ${os.length?os.join(', '):'None selected'}`);
+  }
+  lines.push(`City/local return expected: ${selectedText('localNeed')}`);
+  if(val('localNeed')==='yes') lines.push(`City/local returns: ${selectedText('localCount')}`);
+  lines.push(`All documents/supporting information ready: ${selectedText('docsReady')}`);
+  if(selected('selfemp')) lines.push(`Business records ready: ${selectedText('bizReady')}`);
+  lines.push(`Estimated tax preparation fee: ${money(total)}`);
+  return lines.join('\n');
+}
+function requestPortal(){ window.location.href='new-client.html'; }
+function declinePortal(){ document.getElementById('portalNoMessage').style.display='block'; }
+function requestManualReview(){ window.location.href='new-client.html?manual=1'; }
+function declineManualReview(){ document.getElementById('manualNoMessage').style.display='block'; }
+function calculate(){
+  if(!document.getElementById("confirm").checked){
+    document.getElementById("confirmError").style.display="block"; return;
+  }
+  document.getElementById("confirmError").style.display="none";
+
+  // Situations intentionally routed to individual review. We still run the
+  // calculator so LT Tax Co. receives an internal comparison amount, but that
+  // amount is never presented as the client's estimate.
+  const manual = selected("other") || [...document.querySelectorAll(".special")].some(x=>x.checked);
+
+  let tier=1, complexity=0;
+  const filing=val("filing"), deps=num("deps"), deduction=val("deduction");
+  if(filing==="Head of Household" || deps>0) tier=Math.max(tier,2);
+  if(deduction==="itemized") tier=3;
+
+  if(selected("interest") && val("intover")==="yes") tier=Math.max(tier,2);
+  if(selected("dividend") && val("divover")==="yes") tier=Math.max(tier,2);
+  if(selected("ssa") && val("railroad")==="yes") tier=Math.max(tier,2);
+  if(selected("retirement") && val("early")==="yes") tier=Math.max(tier,2);
+
+  if(selected("investments")){tier=Math.max(tier,2);complexity++}
+  if(selected("selfemp")){tier=Math.max(tier,2);complexity++;if(num("bizcount")>=2)tier=3}
+  if(selected("rental")){tier=Math.max(tier,2);complexity++;if(num("rentalcount")>=2)tier=3}
+  if(selected("royalty")){tier=Math.max(tier,2);complexity++}
+  if(selected("k1")){tier=Math.max(tier,2);complexity++}
+  if(selected("gambling")) complexity++;
+  if(selected("crypto")||selected("farm")||selected("debt")) tier=3;
+  if(document.getElementById("childcare").checked || document.getElementById("education").checked || document.getElementById("marketplace").checked) tier=Math.max(tier,2);
+  if(document.getElementById("soldhome").checked && val("homesale1099")==="yes"){tier=Math.max(tier,2);complexity++}
+  if(complexity>=2) tier=3;
+
+  // Form-count escalation uses the total expected count of qualifying income forms.
+  let forms=0;
+  if(selected("w2")) forms+=num("w2count");
+  if(selected("interest")) forms+=num("intcount");
+  if(selected("dividend")) forms+=num("divcount");
+  if(selected("ssa")) forms+=num("ssacount");
+  if(selected("retirement")) forms+=num("rcount");
+  if(selected("unemployment")) forms+=num("gcount");
+  if(selected("gambling")) forms+=num("wgcount");
+
+  let qtyAdd=0;
+  if(tier<3){
+    if(forms>=5){tier=Math.min(3,tier+1);}
+    else if(forms>=3) qtyAdd=25;
+  } else {
+    if(forms>=3) qtyAdd=Math.floor(forms/3)*25;
+  }
+
+  let prep = tier===1?100:tier===2?175:250;
+  prep = Math.min(350, prep+qtyAdd);
+
+  // States: one reciprocal wage state is included with the home state.
+  // Additional/nonreciprocal states are $40 each.
+  let stateFee=0;
+  if(val("otherStateYes")==="yes"){
+    const hs=val("homeState");
+    const others=[...document.querySelectorAll(".otherState:checked")].map(x=>x.value).filter(x=>x!==hs);
+    let freeReciprocalUsed=false;
+    others.forEach(s=>{
+      if(reciprocalPairs.has(pair(hs,s)) && !freeReciprocalUsed){freeReciprocalUsed=true;}
+      else stateFee+=40;
+    });
+  }
+
+  let localFee=0;
+  if(val("localNeed")==="yes") localFee=num("localCount")*25;
+
+  const total=prep+stateFee+localFee;
+  const estimateData={
+    total: money(total),
+    internalCalculatedEstimate: money(total),
+    summary: buildEstimatorSummary(total),
+    manualReview: manual,
+    clientFacingResult: manual ? 'Manual review required' : money(total),
+    created: new Date().toISOString()
+  };
+  sessionStorage.setItem('ltTaxEstimate', JSON.stringify(estimateData));
+
+  if(manual){showManual();return;}
+
+  document.getElementById("prep").textContent=money(prep);
+  document.getElementById("stateFee").textContent=money(stateFee);
+  document.getElementById("localFee").textContent=money(localFee);
+  document.getElementById("total").textContent=money(total);
+  document.getElementById("total2").textContent=money(total);
+  document.querySelectorAll(".stage").forEach(x=>x.classList.remove("active"));
+  document.getElementById("manualResult").classList.remove("show");
+  document.getElementById("normalResult").classList.add("show");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function showManual(){
+  document.querySelectorAll(".stage").forEach(x=>x.classList.remove("active"));
+  document.getElementById("normalResult").classList.remove("show");
+  document.getElementById("manualResult").classList.add("show");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
+</body>
+</html>
