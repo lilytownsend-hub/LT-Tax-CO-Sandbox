@@ -16,19 +16,8 @@ input[readonly]{background:#f4efe7;color:#5c5651}textarea{min-height:180px;resiz
 .note{font-size:.92rem;color:#5c5651}.security{background:var(--cream2);padding:16px 18px;border-left:3px solid var(--burgundy);margin:22px 0}
 footer{background:var(--charcoal);color:#f5eee3;padding:30px 0}footer a{color:white}
 @media(max-width:650px){.nav{flex-direction:column;align-items:flex-start;padding:14px 0}.brand img{width:260px;max-width:100%}main{padding-top:38px}}
-
-/* Resources navigation dropdown */
-.nav-dropdown{position:relative;display:inline-block}
-.nav-dropdown summary{list-style:none;cursor:pointer;font-weight:700}
-.nav-dropdown summary::-webkit-details-marker{display:none}
-.nav-dropdown summary::after{content:" ▾";font-size:.75em}
-.nav-dropdown-menu{display:none;position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:180px;padding:8px 0;background:var(--white,#fffdf9);border:1px solid #e8ded0;box-shadow:0 8px 20px rgba(45,35,30,.12);z-index:30}
-.nav-dropdown[open] .nav-dropdown-menu,.nav-dropdown:hover .nav-dropdown-menu{display:block}
-.nav-dropdown-menu a{display:block;padding:9px 16px;white-space:nowrap;text-decoration:none}
-@media(max-width:600px){.nav-dropdown-menu{left:0;transform:none}}
-
 </style></head><body>
-<header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html">Back to Home</a><details class="nav-dropdown"><summary>Resources</summary><div class="nav-dropdown-menu"><a href="resources.html">Free Resources</a><a href="paid-resources.html">Paid Resources</a></div></details></nav></div></header>
+<header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html">Back to Home</a></nav></div></header>
 <main><div class="wrap"><div class="eyebrow">Tax Consultations</div><h1>Request a Consultation</h1>
 <p>Thank you for reaching out about a tax consultation. To help us make the best use of your appointment time, please include a list of the questions or tax topics you would like to discuss.</p>
 <div class="price"><strong>Consultations are $50 per hour with a 2-hour minimum ($100 minimum).</strong><br>After the first 2 hours, additional time is billed in 15-minute increments at <strong>$12.50 per 15 minutes.</strong></div>
@@ -38,4 +27,5 @@ footer{background:var(--charcoal);color:#f5eee3;padding:30px 0}footer a{color:wh
 <script>
 document.querySelector('.directForm').addEventListener('submit',async function(e){e.preventDefault();const btn=this.querySelector('button'),status=this.querySelector('.formStatus');btn.disabled=true;btn.textContent='Sending...';status.textContent='';try{const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(this)});const j=await r.json();if(j.success){status.textContent='Request sent! Thank you. LT Tax Co. has received your message.';this.reset();btn.textContent='Sent';}else throw new Error(j.message||'Submission failed');}catch(err){status.textContent='We could not send your request. Please try again.';btn.disabled=false;btn.textContent='Send Request';}}
 );
-</script></body></html>
+</script><div id="widget" class="widget"><button id="launcher" class="launcher" aria-label="Open Vanessa chat"><img src="vanessa/assets/waving.png" alt="Vanessa waving"><span>Need a hand? I'm here to help!</span></button><section id="panel" class="panel hidden" aria-label="Vanessa chat" role="dialog"><header><img src="vanessa/assets/standing.png" alt="Vanessa"><div><strong>Vanessa</strong><small>LT Tax Co. virtual receptionist</small></div><button id="mute" title="Toggle sound" aria-label="Mute sounds">♪</button><button id="close" title="Close chat" aria-label="Close chat">×</button></header><div id="transcript" class="transcript" aria-live="polite"></div><div id="typing" class="typing hidden" aria-label="Vanessa is typing">● ● ●</div><div id="controls" class="controls"></div><footer><button id="back">← Back</button><span>Guided help · No AI</span></footer></section></div><link rel="stylesheet" href="vanessa/styles.css"><script src="vanessa/config.js"></script><script src="vanessa/script.js"></script>
+</body></html>
