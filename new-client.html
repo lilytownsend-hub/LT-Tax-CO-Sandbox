@@ -1,19 +1,46 @@
-<!DOCTYPE html>
-
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Request Client Portal | LT Tax Co.</title><style>
 :root{--burgundy:#5A0E1E;--burgundy-dark:#3f0914;--charcoal:#2E2E2E;--cream:#fbf7ef;--cream2:#f5eee3;--white:#fffdf9;--border:#dfd4c6}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--charcoal);font-family:Arial,Helvetica,sans-serif;line-height:1.6}.wrap{width:min(760px,calc(100% - 36px));margin:auto}header{border-bottom:1px solid #e8ded0;background:var(--cream)}.nav{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand img{width:300px;max-width:48vw;display:block}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:var(--charcoal);font-weight:700;text-decoration:none}main{padding:58px 0 90px}.eyebrow{color:var(--burgundy);font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}h1,h2{font-family:Georgia,"Times New Roman",serif;color:var(--burgundy-dark);font-weight:500}h1{font-size:clamp(2.6rem,6vw,4.5rem);line-height:1.05;margin:10px 0 22px}.card{background:var(--white);border:1px solid var(--border);padding:28px;border-radius:6px;margin-top:30px}.field{margin:17px 0}label{display:block;font-weight:700;margin-bottom:7px}input{width:100%;padding:12px;border:1px solid #cfc4b6;border-radius:4px;background:white;font:inherit}.btn{display:inline-block;border:1px solid var(--burgundy);border-radius:4px;padding:12px 20px;font-weight:700;font:inherit;cursor:pointer;background:var(--burgundy);color:white;text-decoration:none}.security{background:var(--cream2);padding:16px 18px;border-left:3px solid var(--burgundy);margin:24px 0}.estimate{font-family:Georgia,"Times New Roman",serif;color:var(--burgundy);font-size:2.2rem;margin:6px 0}.note{font-size:.92rem;color:#5c5651}.status{display:none;padding:16px 18px;margin-top:18px;border-left:3px solid var(--burgundy);background:var(--cream2)}footer{background:var(--charcoal);color:#f5eee3;padding:30px 0}footer a{color:white}@media(max-width:650px){.nav{flex-direction:column;align-items:flex-start;padding:14px 0}.brand img{width:260px;max-width:100%}main{padding-top:38px}.card{padding:22px}}
 </style></head><body>
-<header><div class="wrap nav"><a class="brand" href="index.html"><img alt="LT Tax Co." src="logo-horizontal.png"/></a><nav><a href="index.html">Back to Home</a><a href="https://taxestogo.com/App/Download/71228">Returning Client Login</a></nav></div></header>
+<header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html">Back to Home</a><a href="https://taxestogo.com/App/Download/71228">Returning Client Login</a></nav></div></header>
 <main><div class="wrap"><div class="eyebrow">New Clients</div><h1 id="pageTitle">Request Your Client Portal</h1>
-<p id="pageIntro">Use our online booking calendar to schedule an appointment, or open TaxesToGo to access the secure client app.</p>
+<p id="pageIntro">Your tax prep estimate is complete. We only need your first name, last name, and email address to send your portal request to LT Tax Co.</p>
 <div class="security"><strong>Do not enter tax documents, Social Security numbers, account numbers, or other sensitive personal information here.</strong> Once your portal is activated, sensitive information and documents should be provided securely through the client portal.</div>
-<div class="card" id="requestCard"><h2 id="resultHeading" style="margin-top:0">Your Tax Prep Estimate</h2><div class="estimate" id="estimateAmount"></div><p class="note" id="resultNote">Your estimate is displayed for your reference. Booking an appointment does not automatically transmit your estimator selections.</p>
-<div class="actions"><a class="btn" href="https://bookings.cloud.microsoft/book/LTTaxCo2@lttaxco.com/?ismsaljsauthenabled" rel="noopener noreferrer" target="_blank">Book an Appointment</a><a class="btn" href="https://taxestogo.com/App/Download/71228" rel="noopener noreferrer" target="_blank">Open TaxesToGo</a></div></div>
+<div class="card" id="requestCard"><h2 style="margin-top:0" id="resultHeading">Your Tax Prep Estimate</h2><div class="estimate" id="estimateAmount"></div><p class="note" id="resultNote">Your estimate and estimator selections will be included with your request to LT Tax Co.</p>
+<form id="portalForm">
+<input type="hidden" name="access_key" value="c177d554-ddf8-468f-b647-8dc9067ddc10"><input type="hidden" name="subject" id="subjectField" value="New Client Portal Access Request"><input type="hidden" name="from_name" value="LT Tax Co. Website"><input type="hidden" name="form_type" id="formTypeField" value="New Client Portal Access Request"><input type="hidden" name="client_facing_result" id="clientFacingField"><input type="hidden" name="tax_prep_estimate" id="estimateField"><input type="hidden" name="internal_calculator_comparison" id="internalEstimateField"><input type="hidden" name="estimator_selections" id="summaryField">
+<div class="field"><label for="firstName">First name</label><input id="firstName" name="first_name" autocomplete="given-name" required></div>
+<div class="field"><label for="lastName">Last name</label><input id="lastName" name="last_name" autocomplete="family-name" required></div>
+<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+<button class="btn" type="submit" id="sendBtn">Send Request</button><div class="status" id="status"></div></form></div>
 <div class="card" id="missing" style="display:none"><h2 style="margin-top:0">Complete Your Estimate First</h2><p>New client portal requests begin with the LT Tax Co. tax prep estimator.</p><a class="btn" href="estimator.html?newclient=1">Get Your Tax Prep Estimate</a></div>
-</div></main><footer><div class="wrap"><strong>LT Tax Co.</strong>   |   lily.townsend@lttaxco.com</div><div style="text-align:center;padding:10px"><a href="https://bookings.cloud.microsoft/book/LTTaxCo2@lttaxco.com/?ismsaljsauthenabled" target="_blank" rel="noopener noreferrer">Book an Appointment</a></div></footer>
-<script>const saved=sessionStorage.getItem('ltTaxEstimate');
-if(!saved){document.getElementById('requestCard').style.display='none';document.getElementById('missing').style.display='block'}
-else {try{const d=JSON.parse(saved);if(d.manualReview){document.getElementById('resultHeading').textContent='Individual Review Needed';document.getElementById('estimateAmount').textContent='Individual review required'}else{document.getElementById('estimateAmount').textContent=d.total||'Estimate unavailable'}}catch(e){document.getElementById('requestCard').style.display='none';document.getElementById('missing').style.display='block'}}</script><div id="lt-vanessa-root"></div><script defer src="vanessa/widget.js"></script>
-</body></html>
+</div></main><footer><div class="wrap"><strong>LT Tax Co.</strong> &nbsp; | &nbsp; lily.townsend@lttaxco.com</div></footer>
+<script>
+const saved=sessionStorage.getItem('ltTaxEstimate');
+let isManual=false;
+if(!saved){document.getElementById('requestCard').style.display='none';document.getElementById('missing').style.display='block';}
+else{try{
+  const d=JSON.parse(saved);
+  isManual=!!d.manualReview;
+  document.getElementById('summaryField').value=d.summary||'';
+  document.getElementById('clientFacingField').value=d.clientFacingResult||(isManual?'Manual review required':d.total);
+  document.getElementById('internalEstimateField').value=d.internalCalculatedEstimate||d.total||'';
+  if(isManual){
+    document.title='Send Estimate Request | LT Tax Co.';
+    document.getElementById('pageTitle').textContent='Send Your Estimate Request';
+    document.getElementById('pageIntro').textContent='Your tax situation needs an individual review before an accurate preparation fee can be estimated. We only need your first name, last name, and email address so LT Tax Co. can follow up with you.';
+    document.getElementById('resultHeading').textContent='Individual Review Requested';
+    document.getElementById('estimateAmount').style.display='none';
+    document.getElementById('resultNote').textContent='Your estimator selections will be included with your request. The calculator comparison amount is sent privately to LT Tax Co. and is not presented as your tax prep estimate.';
+    document.getElementById('estimateField').value='Manual review required';
+    document.getElementById('subjectField').value='Manual Tax Prep Estimate Request';
+    document.getElementById('formTypeField').value='Manual Tax Prep Estimate Request';
+  }else{
+    document.getElementById('estimateAmount').textContent=d.total;
+    document.getElementById('estimateField').value=d.total;
+  }
+}catch(e){sessionStorage.removeItem('ltTaxEstimate');location.href='estimator.html?newclient=1';}}
+document.getElementById('portalForm').addEventListener('submit',async function(e){e.preventDefault();const btn=document.getElementById('sendBtn'),status=document.getElementById('status');btn.disabled=true;btn.textContent='Sending...';status.style.display='none';try{const data=new FormData(this);const r=await fetch('https://api.web3forms.com/submit',{method:'POST',body:data});const j=await r.json();if(j.success){status.style.display='block';status.innerHTML=isManual?'<strong>Request sent!</strong><br>Thank you. LT Tax Co. has received your estimate review request and can follow up with you.':'<strong>Request sent!</strong><br>Thank you. LT Tax Co. has received your client portal request.';this.querySelectorAll('input:not([type=hidden])').forEach(x=>x.disabled=true);btn.style.display='none';sessionStorage.removeItem('ltTaxEstimate');}else throw new Error(j.message||'Submission failed');}catch(err){status.style.display='block';status.textContent='We could not send your request. Please try again.';btn.disabled=false;btn.textContent='Send Request';}});
+</script></body></html>
