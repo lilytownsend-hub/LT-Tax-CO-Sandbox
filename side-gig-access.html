@@ -18,10 +18,21 @@ h1,h2{font-family:Georgia,"Times New Roman",serif;color:var(--bd);line-height:1.
 .back{display:inline-block;margin-top:18px;color:var(--b);font-weight:700}footer{background:var(--c);color:#f5eee3;padding:30px 0}footer a{color:white}
 @media(max-width:760px){.nav{align-items:flex-start;flex-direction:column;padding:14px 0}.brand img{width:260px;max-width:100%}nav{width:100%;justify-content:space-between;gap:10px;flex-wrap:wrap}}
 </style>
+<style id="lt-resources-menu">
+/* Isolated Resources navigation menu */
+nav .lt-resource-menu{position:relative;display:inline-flex;align-items:center;z-index:100}
+nav .lt-resource-menu summary{list-style:none;cursor:pointer;font:inherit;color:inherit;white-space:nowrap}
+nav .lt-resource-menu summary::-webkit-details-marker{display:none}
+nav .lt-resource-menu summary::after{content:" ▾";font-size:.8em}
+nav .lt-resource-menu[open] summary::after{content:" ▴"}
+nav .lt-resource-options{position:absolute;top:100%;left:0;min-width:190px;background:#fffdf9;color:#2e2e2e;border:1px solid #d9d9d9;box-shadow:0 8px 22px #0002;border-radius:8px;padding:7px 0;display:flex;flex-direction:column;gap:0}
+nav .lt-resource-options a{display:block;color:#2e2e2e;text-decoration:none;padding:11px 14px;white-space:nowrap;font-weight:700}
+nav .lt-resource-options a:hover,nav .lt-resource-options a:focus-visible{background:#f5eee3;color:#5a0e1e}
+</style>
 </head>
 <body>
 <header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a>
-<nav><a href="index.html#services">Services</a><a href="resources.html">Resources</a><a href="careers.html">Careers</a><a href="index.html#contact">Contact</a></nav></div></header>
+<nav><a href="index.html#services">Services</a><details class="lt-resource-menu"><summary>Resources</summary><div class="lt-resource-options"><a href="resources.html">Free Resources</a><a href="paid-resources.html">Paid Resources</a></div></details><a href="careers.html">Careers</a><a href="index.html#contact">Contact</a></nav></div></header>
 <main><div class="wrap">
 <div class="eyebrow">One-Time Assessment · $10</div>
 <h1>Can I Afford This Side Gig?</h1>
