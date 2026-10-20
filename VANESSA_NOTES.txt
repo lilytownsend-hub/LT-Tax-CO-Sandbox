@@ -1,1 +1,1 @@
-Optimized GitHub Pages build. Upload the HTML files and vanessa/ folder together at repository root. Vanessa widget JavaScript is shared; original approved poses are separate image assets. No base64 image data embedded in pages.
+Vanessa Core v1 sandbox: one waving image, existing guided chat, refund-status.html accessed through chat. State names listed but individual state refund links not yet verified: IRS official directory used as interim. Keep vanessa/ unchanged for ordinary site patches. Test in sandbox before production.
