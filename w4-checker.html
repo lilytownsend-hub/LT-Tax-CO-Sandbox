@@ -45,7 +45,13 @@
 <div class="card"><h2>18. Anything else we should know?</h2><div class="field"><label>Is there anything else about your tax situation or the result you're hoping for that LT Tax Co. should know?</label><textarea id="clientNotes" name="client_notes" placeholder="Tell us anything you think may matter, including a job change, unusual income, or a specific result you are hoping for. You do not need to know tax-form names or credit amounts." rows="6"></textarea><div class="small">Please do not enter Social Security numbers, account numbers, or upload tax documents here.</div></div></div>
 <div class="actions hidden"><button class="btn" id="calcBtn" type="button">Calculate My Preliminary Check</button></div><div class="wizard-nav" id="wizardNav"><button class="btn secondary" id="wizardBack" type="button">Back</button><button class="btn" id="wizardNext" type="button">Next</button></div><div class="wizard-progress" id="wizardProgress"></div><div class="hidden" id="resultBox"></div>
 <div class="card hidden" id="submitCard"><h2>Send to LT Tax Co. for Review</h2><p>LT Tax Co. will review your information and prepare an example federal W-4 and applicable state withholding form for you at no cost. We’ll email your example back to you after review.</p><label class="choice"><input id="certify" required="" type="checkbox"/><span>I confirm that the information I entered is complete and truthful to the best of my knowledge. I understand that withholding results can change if my income, household, deductions, credits, tax law, or other circumstances change, and LT Tax Co. cannot guarantee a specific refund or amount due.</span></label><div class="actions" style="margin-top:16px"><button class="btn" type="submit">Send for Professional Review</button></div><p id="sendStatus"></p></div></form>
-</div></main><footer><div class="wrap"><strong>LT Tax Co.</strong>   |   <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div></footer>
+</div></main><footer><div class="wrap"><strong>LT Tax Co.</strong>   |   <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div>
+<div class="lt-social-links" aria-label="LT Tax Co. social media" style="text-align:center;padding:12px 16px;font-size:0.95rem;line-height:1.8;">
+  <span style="margin-right:10px;">Connect with LT Tax Co.:</span>
+  <a href="https://www.facebook.com/profile.php?id=61596042232133" target="_blank" rel="noopener noreferrer" aria-label="LT Tax Co. on Facebook" style="margin-right:18px;">Facebook</a>
+  <a href="https://nextdoor.com/page/lt-tax-co-janesville-wi" target="_blank" rel="noopener noreferrer" aria-label="LT Tax Co. on Nextdoor">Nextdoor</a>
+</div>
+</footer>
 <script>
 const ACCESS='c177d554-ddf8-468f-b647-8dc9067ddc10';let last=null;
 const goalEls=()=>[...document.querySelectorAll('input[name=goal]')];
