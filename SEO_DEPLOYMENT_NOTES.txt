@@ -1,0 +1,15 @@
+LT Tax Co. SEO Five-State Packet — sandbox deployment
+Base: Version 847, Trademark Strikes Back.
+Adds unique titles, descriptions, canonical URLs, Open Graph tags, business JSON-LD,
+XML sitemap, robots.txt, and five informative state landing pages.
+Adds five regional links in homepage footer. Original logo image is unchanged.
+No GitHub production or sandbox repository has been edited by this packet.
+
+IMPORTANT BEFORE PRODUCTION:
+- Confirm canonical website URL is https://lttaxco.com (including www preference).
+- Confirm business address, phone, service area and any licensing/authorization requirements.
+- Review state-specific reciprocity language for current accuracy.
+- Verify new regional pages are linked and mobile-friendly in the sandbox.
+- Submit sitemap through Google Search Console and Bing Webmaster Tools after deployment.
+- Robots and sitemap do not guarantee indexing or rankings.
+- The appointment page continues to display the existing intake announcement.

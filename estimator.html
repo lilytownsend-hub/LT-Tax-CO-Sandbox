@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Get Your Tax Prep Estimate | LT Tax Co.</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Tax Preparation Estimate | LT Tax Co.</title>
 <style>
 :root{
   --burgundy:#5A0E1E; --burgundy-dark:#3f0914; --charcoal:#2E2E2E;
@@ -59,7 +60,6 @@ footer a{color:white}
   .stage{padding:22px}
 }
 </style>
-
 <style id="lt-logo-trademark">
 /* Responsive trademark marks for the two parts of the existing logo.
    The original logo image is preserved without modification. */
@@ -73,195 +73,181 @@ footer a{color:white}
 .brand:has(> img[src="logo-horizontal.png"])::before{left:40%;top:26%}
 .brand:has(> img[src="logo-horizontal.png"])::after{left:92%;top:35%}
 </style>
-
-</head>
+<meta content="Explore an estimated individual tax preparation fee with LT Tax Co.'s online estimator." name="description"/><meta content="index, follow" name="robots"/><link href="https://lttaxco.com/estimator.html" rel="canonical"/><meta content="Tax Preparation Estimate | LT Tax Co." property="og:title"/><meta content="Explore an estimated individual tax preparation fee with LT Tax Co.'s online estimator." property="og:description"/><meta content="website" property="og:type"/><meta content="https://lttaxco.com/estimator.html" property="og:url"/></head>
 <body>
 <header>
-  <div class="wrap nav">
-    <a class="brand" href="index.html" aria-label="LT Tax Co. home"><img src="logo-horizontal.png" alt="LT Tax Co."></a>
-    <nav><a href="index.html">Back to Home</a></nav>
-  </div>
+<div class="wrap nav">
+<a aria-label="LT Tax Co. home" class="brand" href="index.html"><img alt="LT Tax Co." src="logo-horizontal.png"/></a>
+<nav><a href="index.html">Back to Home</a></nav>
+</div>
 </header>
-
 <main>
 <div class="wrap">
-  <div id="intro">
-    <div class="eyebrow">LT Tax Co.</div>
-    <h1>Get Your Tax Prep Estimate</h1>
-    <p class="lead">Answer a few questions about your expected tax return to get an estimated preparation fee from LT Tax Co.</p>
-    <p>Your estimate is based on the information you provide and is calculated using the <strong>low end of the expected preparation cost</strong>. It is intended to give you an idea of what your tax preparation may cost before getting started.</p>
-    <div class="warning"><strong>This estimate is not a guaranteed final price.</strong><br><br>
-      Your final fee may be higher if your return requires additional complexity, research or review, missing documentation or information must be obtained, or additional tax situations are identified during preparation.<br><br>
+<div id="intro">
+<div class="eyebrow">LT Tax Co.</div>
+<h1>Get Your Tax Prep Estimate</h1>
+<p class="lead">Answer a few questions about your expected tax return to get an estimated preparation fee from LT Tax Co.</p>
+<p>Your estimate is based on the information you provide and is calculated using the <strong>low end of the expected preparation cost</strong>. It is intended to give you an idea of what your tax preparation may cost before getting started.</p>
+<div class="warning"><strong>This estimate is not a guaranteed final price.</strong><br/><br/>
+      Your final fee may be higher if your return requires additional complexity, research or review, missing documentation or information must be obtained, or additional tax situations are identified during preparation.<br/><br/>
       Returns requiring more than 2 hours of preparation may incur additional preparation fees at <strong>$50 per hour, prorated in 15-minute increments ($12.50 per 15 minutes).</strong>
-    </div>
-    <p>For the most accurate estimate, please include <strong>all income sources, tax documents, and tax situations you expect to report</strong>, even if you're unsure whether something affects your taxes.</p>
-    <button class="btn primary" onclick="startEstimate()">Start My Tax Prep Estimate</button>
-  </div>
-
-  <section class="stage" id="s1">
-    <h2>About Your Return</h2>
-    <p>Let's start with a few basics about the tax return you expect to file.</p>
-    <div class="grid">
-      <div class="field"><label for="filing">Expected filing status</label>
-        <select id="filing"><option value="">Choose one</option><option>Single</option><option>Married Filing Jointly</option><option>Married Filing Separately</option><option>Head of Household</option><option>Qualifying Surviving Spouse</option><option>Unsure</option></select>
-      </div>
-      <div class="field"><label for="deps">Dependents</label>
-        <select id="deps"><option value="">Choose one</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4+</option></select>
-      </div>
-      <div class="field"><label for="deduction">Expected deduction</label>
-        <select id="deduction"><option value="">Choose one</option><option value="standard">Standard deduction</option><option value="itemized">Itemized deductions</option><option value="unsure">Unsure</option></select>
-        <div class="note">If you're unsure, this estimate assumes the standard deduction. Your final fee may change if itemizing is appropriate.</div>
-      </div>
-    </div>
-    <div class="controls"><span></span><button class="btn primary" onclick="go(2)">Continue</button></div>
-  </section>
-
-  <section class="stage" id="s2">
-    <h2>Your Income</h2>
-    <p>Which types of income do you expect to report? Select everything that applies.</p>
-    <div class="checks" id="incomeChecks">
-      <label class="check"><input type="checkbox" data-inc="w2">W-2 employment income</label>
-      <label class="check"><input type="checkbox" data-inc="interest">Interest income</label>
-      <label class="check"><input type="checkbox" data-inc="dividend">Dividend income</label>
-      <label class="check"><input type="checkbox" data-inc="ssa">Social Security benefits</label>
-      <label class="check"><input type="checkbox" data-inc="retirement">Retirement or pension distributions</label>
-      <label class="check"><input type="checkbox" data-inc="unemployment">Unemployment income</label>
-      <label class="check"><input type="checkbox" data-inc="investments">Investments I sold</label>
-      <label class="check"><input type="checkbox" data-inc="selfemp">Self-employment or side-gig income</label>
-      <label class="check"><input type="checkbox" data-inc="rental">Rental property income</label>
-      <label class="check"><input type="checkbox" data-inc="royalty">Royalty income</label>
-      <label class="check"><input type="checkbox" data-inc="k1">K-1 income</label>
-      <label class="check"><input type="checkbox" data-inc="gambling">Gambling winnings</label>
-      <label class="check"><input type="checkbox" data-inc="crypto">Cryptocurrency transactions</label>
-      <label class="check"><input type="checkbox" data-inc="farm">Farm income</label>
-      <label class="check"><input type="checkbox" data-inc="debt">Cancellation of debt</label>
-      <label class="check"><input type="checkbox" data-inc="other">Other income or tax document not listed</label>
-    </div>
-    <p class="note"><strong>Don't leave something out just because you're unsure whether it's taxable.</strong> Select anything you expect to receive or report, and we'll account for it in your estimate.</p>
-
-    <div id="c-w2" class="conditional"><label>How many W-2s?</label><select id="w2count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5+</option></select></div>
-    <div id="c-interest" class="conditional grid"><div><label>How many 1099-INT forms?</label><select id="intcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Is total interest over $1,500?</label><select id="intover"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
-    <div id="c-dividend" class="conditional grid"><div><label>How many 1099-DIV forms?</label><select id="divcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Are total dividends over $1,500?</label><select id="divover"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
-    <div id="c-ssa" class="conditional grid"><div><label>How many SSA-1099 forms?</label><select id="ssacount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Railroad Retirement?</label><select id="railroad"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
-    <div id="c-retirement" class="conditional grid"><div><label>How many 1099-R forms?</label><select id="rcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Any early withdrawal?</label><select id="early"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
-    <div id="c-unemployment" class="conditional"><label>How many 1099-G unemployment forms?</label><select id="gcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div>
-    <div id="c-selfemp" class="conditional grid"><div><label>How many separate businesses or self-employment activities?</label><select id="bizcount"><option value="1">1</option><option value="2">2+</option></select></div><div><label>How many 1099-NEC/MISC forms?</label><select id="neccount"><option value="0">0</option><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div></div>
-    <div id="c-rental" class="conditional"><label>How many rental properties?</label><select id="rentalcount"><option value="1">1</option><option value="2">2+</option></select></div>
-    <div id="c-k1" class="conditional"><label>How many K-1s?</label><select id="k1count"><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></div>
-    <div id="c-gambling" class="conditional"><label>How many W-2G forms?</label><select id="wgcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div>
-    <div id="c-other" class="conditional"><label>Briefly describe the income or document</label><textarea id="othertext"></textarea></div>
-
-    <div class="controls"><button class="btn secondary" onclick="go(1)">Back</button><button class="btn primary" onclick="go(3)">Continue</button></div>
-  </section>
-
-  <section class="stage" id="s3">
-    <h2>Credits &amp; Other Tax Situations</h2>
-    <p>Select everything that applies.</p>
-    <div class="checks">
-      <label class="check"><input type="checkbox" id="childcare">Childcare expenses</label>
-      <label class="check"><input type="checkbox" id="education">College or other qualifying education expenses</label>
-      <label class="check"><input type="checkbox" id="studentloan">Student loan interest</label>
-      <label class="check"><input type="checkbox" id="hsa">HSA contributions or distributions</label>
-      <label class="check"><input type="checkbox" id="marketplace">Marketplace health insurance</label>
-      <label class="check"><input type="checkbox" id="boughthome">I bought a home</label>
-      <label class="check"><input type="checkbox" id="soldhome" onchange="toggleSold()">I sold my primary home</label>
-      <label class="check"><input type="checkbox" id="estimated">I made estimated tax payments</label>
-    </div>
-    <div id="soldExtra" class="conditional"><label>Do you expect to receive Form 1099-S for the home sale?</label><select id="homesale1099"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div>
-    <div class="controls"><button class="btn secondary" onclick="go(2)">Back</button><button class="btn primary" onclick="go(4)">Continue</button></div>
-  </section>
-
-  <section class="stage" id="s4">
-    <h2>State &amp; Local Returns</h2>
-    <div class="field"><label for="homeState">Home state</label>
-      <select id="homeState"><option value="">Choose one</option></select>
-    </div>
-    <div class="field"><label for="otherStates">Did you earn employee wages in any other states?</label>
-      <select id="otherStateYes" onchange="toggleStates()"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select>
-    </div>
-    <div id="stateExtra" class="conditional">
-      <label>Select the other state(s)</label>
-      <div id="stateChecks" class="checks"></div>
-      <p class="note">Reciprocity affects employee wage income only. Other out-of-state income may require individual review.</p>
-    </div>
-    <div class="field"><label>Do you expect to need a city or local income tax return?</label>
-      <select id="localNeed" onchange="toggleLocal()"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select>
-    </div>
-    <div id="localExtra" class="conditional"><label>How many city/local returns?</label><select id="localCount"><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></div>
-    <div class="controls"><button class="btn secondary" onclick="go(3)">Back</button><button class="btn primary" onclick="go(5)">Continue</button></div>
-  </section>
-
-  <section class="stage" id="s5">
-    <h2>Special Circumstances</h2>
-    <p>Do any of the following apply?</p>
-    <div class="checks">
-      <label class="check"><input type="checkbox" class="special" value="energy">Energy-efficient home improvements or residential clean energy expenses</label>
-      <label class="check"><input type="checkbox" class="special" value="foreign">Foreign income, foreign accounts, or foreign tax reporting</label>
-      <label class="check"><input type="checkbox" class="special" value="unlisted">Another tax situation that wasn't covered in this estimator</label>
-      <label class="check"><input type="checkbox" id="specialNone">None of these</label>
-    </div>
-    <div id="specialTextWrap" class="conditional"><label>Briefly explain</label><textarea id="specialText"></textarea></div>
-    <p class="note">Some situations require individual review before an accurate price can be estimated.</p>
-    <div class="controls"><button class="btn secondary" onclick="go(4)">Back</button><button class="btn primary" onclick="go(6)">Continue</button></div>
-  </section>
-
-  <section class="stage" id="s6">
-    <h2>Almost Done</h2>
-    <div class="field"><label>Will you have all tax documents and supporting information available when you complete intake?</label>
-      <select id="docsReady"><option value="yes">Yes</option><option value="no">No</option><option value="unsure">Unsure</option></select>
-      <p class="note">Complete information helps keep your fee within the estimated range. Additional fees may apply for missing information, follow-up, research, or review.</p>
-    </div>
-    <div id="bizReadyWrap" class="conditional">
-      <label>Will your business income, expenses, mileage/vehicle information, and supporting records be ready?</label>
-      <select id="bizReady"><option value="yes">Yes</option><option value="no">No</option><option value="unsure">Unsure</option></select>
-    </div>
-    <label class="check" style="margin-top:24px"><input type="checkbox" id="confirm">I confirm that I have included all income sources, tax documents, and tax situations that I currently expect to report.</label>
-    <p class="note">Leaving out information may result in an inaccurate estimate or a different final fee.</p>
-    <div class="error" id="confirmError">Please confirm that you've included everything you currently expect to report.</div>
-    <div class="controls"><button class="btn secondary" onclick="go(5)">Back</button><button class="btn primary" onclick="calculate()">Calculate My Tax Prep Estimate</button></div>
-  </section>
-
-  <div class="result" id="normalResult">
-    <div class="eyebrow">Your Estimated Tax Preparation Fee</div>
-    <div class="total" id="total">$0</div>
-    <h3>Estimate Breakdown</h3>
-    <div class="breakdown">
-      <div class="row"><span>Tax preparation</span><strong id="prep">$0</strong></div>
-      <div class="row"><span>Additional state return(s)</span><strong id="stateFee">$0</strong></div>
-      <div class="row"><span>City/local return(s)</span><strong id="localFee">$0</strong></div>
-      <div class="row"><strong>Estimated Total</strong><strong id="total2">$0</strong></div>
-    </div>
-    <p>This estimate represents the expected low end based on the information entered and is <strong>not a guaranteed final price.</strong></p>
-    <p>Your fee may increase for additional tax situations, complexity, missing or undisclosed information, documentation, research, or review.</p>
-    <p>Returns requiring more than 2 hours of preparation may incur additional preparation fees at <strong>$50 per hour, prorated in 15-minute increments ($12.50 per 15 minutes).</strong></p>
-    <p>If information is expected to significantly change your estimate, LT Tax Co. will discuss the price change before additional work is completed.</p>
-    <div id="portalQuestion" style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border)">
-      <h3>Do you want to request a client portal?</h3>
-      <div class="controls" style="justify-content:flex-start">
-        <button class="btn primary" type="button" onclick="requestPortal()">Yes</button>
-        <button class="btn secondary" type="button" onclick="declinePortal()">No</button>
-      </div>
-      <p id="portalNoMessage" style="display:none;margin-top:20px;font-weight:700">Not a problem! Shopping around is smart! We hope to see you back here again. :)</p>
-    </div>
-  </div>
-
-  <div class="result" id="manualResult">
-    <h2>Let's Take a Closer Look</h2>
-    <p>Based on the information entered, your situation may require additional review before an accurate preparation fee can be estimated. Rather than give you an inaccurate estimate, LT Tax Co. can review your situation individually.</p>
-    <div id="manualRequestQuestion" style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border)">
-      <h3>Do you want to send your estimate request to LT Tax Co. and have a professional reach out to you?</h3>
-      <div class="controls" style="justify-content:flex-start">
-        <button class="btn primary" type="button" onclick="requestManualReview()">Yes</button>
-        <button class="btn secondary" type="button" onclick="declineManualReview()">No</button>
-      </div>
-      <p id="manualNoMessage" style="display:none;margin-top:20px;font-weight:700">Not a problem! Shopping around is smart! We hope to see you back here again. :)</p>
-    </div>
-  </div>
+</div>
+<p>For the most accurate estimate, please include <strong>all income sources, tax documents, and tax situations you expect to report</strong>, even if you're unsure whether something affects your taxes.</p>
+<button class="btn primary" onclick="startEstimate()">Start My Tax Prep Estimate</button>
+</div>
+<section class="stage" id="s1">
+<h2>About Your Return</h2>
+<p>Let's start with a few basics about the tax return you expect to file.</p>
+<div class="grid">
+<div class="field"><label for="filing">Expected filing status</label>
+<select id="filing"><option value="">Choose one</option><option>Single</option><option>Married Filing Jointly</option><option>Married Filing Separately</option><option>Head of Household</option><option>Qualifying Surviving Spouse</option><option>Unsure</option></select>
+</div>
+<div class="field"><label for="deps">Dependents</label>
+<select id="deps"><option value="">Choose one</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4+</option></select>
+</div>
+<div class="field"><label for="deduction">Expected deduction</label>
+<select id="deduction"><option value="">Choose one</option><option value="standard">Standard deduction</option><option value="itemized">Itemized deductions</option><option value="unsure">Unsure</option></select>
+<div class="note">If you're unsure, this estimate assumes the standard deduction. Your final fee may change if itemizing is appropriate.</div>
+</div>
+</div>
+<div class="controls"><span></span><button class="btn primary" onclick="go(2)">Continue</button></div>
+</section>
+<section class="stage" id="s2">
+<h2>Your Income</h2>
+<p>Which types of income do you expect to report? Select everything that applies.</p>
+<div class="checks" id="incomeChecks">
+<label class="check"><input data-inc="w2" type="checkbox"/>W-2 employment income</label>
+<label class="check"><input data-inc="interest" type="checkbox"/>Interest income</label>
+<label class="check"><input data-inc="dividend" type="checkbox"/>Dividend income</label>
+<label class="check"><input data-inc="ssa" type="checkbox"/>Social Security benefits</label>
+<label class="check"><input data-inc="retirement" type="checkbox"/>Retirement or pension distributions</label>
+<label class="check"><input data-inc="unemployment" type="checkbox"/>Unemployment income</label>
+<label class="check"><input data-inc="investments" type="checkbox"/>Investments I sold</label>
+<label class="check"><input data-inc="selfemp" type="checkbox"/>Self-employment or side-gig income</label>
+<label class="check"><input data-inc="rental" type="checkbox"/>Rental property income</label>
+<label class="check"><input data-inc="royalty" type="checkbox"/>Royalty income</label>
+<label class="check"><input data-inc="k1" type="checkbox"/>K-1 income</label>
+<label class="check"><input data-inc="gambling" type="checkbox"/>Gambling winnings</label>
+<label class="check"><input data-inc="crypto" type="checkbox"/>Cryptocurrency transactions</label>
+<label class="check"><input data-inc="farm" type="checkbox"/>Farm income</label>
+<label class="check"><input data-inc="debt" type="checkbox"/>Cancellation of debt</label>
+<label class="check"><input data-inc="other" type="checkbox"/>Other income or tax document not listed</label>
+</div>
+<p class="note"><strong>Don't leave something out just because you're unsure whether it's taxable.</strong> Select anything you expect to receive or report, and we'll account for it in your estimate.</p>
+<div class="conditional" id="c-w2"><label>How many W-2s?</label><select id="w2count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5+</option></select></div>
+<div class="conditional grid" id="c-interest"><div><label>How many 1099-INT forms?</label><select id="intcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Is total interest over $1,500?</label><select id="intover"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
+<div class="conditional grid" id="c-dividend"><div><label>How many 1099-DIV forms?</label><select id="divcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Are total dividends over $1,500?</label><select id="divover"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
+<div class="conditional grid" id="c-ssa"><div><label>How many SSA-1099 forms?</label><select id="ssacount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Railroad Retirement?</label><select id="railroad"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
+<div class="conditional grid" id="c-retirement"><div><label>How many 1099-R forms?</label><select id="rcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div><div><label>Any early withdrawal?</label><select id="early"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div></div>
+<div class="conditional" id="c-unemployment"><label>How many 1099-G unemployment forms?</label><select id="gcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div>
+<div class="conditional grid" id="c-selfemp"><div><label>How many separate businesses or self-employment activities?</label><select id="bizcount"><option value="1">1</option><option value="2">2+</option></select></div><div><label>How many 1099-NEC/MISC forms?</label><select id="neccount"><option value="0">0</option><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div></div>
+<div class="conditional" id="c-rental"><label>How many rental properties?</label><select id="rentalcount"><option value="1">1</option><option value="2">2+</option></select></div>
+<div class="conditional" id="c-k1"><label>How many K-1s?</label><select id="k1count"><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></div>
+<div class="conditional" id="c-gambling"><label>How many W-2G forms?</label><select id="wgcount"><option>1</option><option>2</option><option>3</option><option>4</option><option value="5">5+</option></select></div>
+<div class="conditional" id="c-other"><label>Briefly describe the income or document</label><textarea id="othertext"></textarea></div>
+<div class="controls"><button class="btn secondary" onclick="go(1)">Back</button><button class="btn primary" onclick="go(3)">Continue</button></div>
+</section>
+<section class="stage" id="s3">
+<h2>Credits &amp; Other Tax Situations</h2>
+<p>Select everything that applies.</p>
+<div class="checks">
+<label class="check"><input id="childcare" type="checkbox"/>Childcare expenses</label>
+<label class="check"><input id="education" type="checkbox"/>College or other qualifying education expenses</label>
+<label class="check"><input id="studentloan" type="checkbox"/>Student loan interest</label>
+<label class="check"><input id="hsa" type="checkbox"/>HSA contributions or distributions</label>
+<label class="check"><input id="marketplace" type="checkbox"/>Marketplace health insurance</label>
+<label class="check"><input id="boughthome" type="checkbox"/>I bought a home</label>
+<label class="check"><input id="soldhome" onchange="toggleSold()" type="checkbox"/>I sold my primary home</label>
+<label class="check"><input id="estimated" type="checkbox"/>I made estimated tax payments</label>
+</div>
+<div class="conditional" id="soldExtra"><label>Do you expect to receive Form 1099-S for the home sale?</label><select id="homesale1099"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select></div>
+<div class="controls"><button class="btn secondary" onclick="go(2)">Back</button><button class="btn primary" onclick="go(4)">Continue</button></div>
+</section>
+<section class="stage" id="s4">
+<h2>State &amp; Local Returns</h2>
+<div class="field"><label for="homeState">Home state</label>
+<select id="homeState"><option value="">Choose one</option></select>
+</div>
+<div class="field"><label for="otherStates">Did you earn employee wages in any other states?</label>
+<select id="otherStateYes" onchange="toggleStates()"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select>
+</div>
+<div class="conditional" id="stateExtra">
+<label>Select the other state(s)</label>
+<div class="checks" id="stateChecks"></div>
+<p class="note">Reciprocity affects employee wage income only. Other out-of-state income may require individual review.</p>
+</div>
+<div class="field"><label>Do you expect to need a city or local income tax return?</label>
+<select id="localNeed" onchange="toggleLocal()"><option value="no">No</option><option value="yes">Yes</option><option value="unsure">Unsure</option></select>
+</div>
+<div class="conditional" id="localExtra"><label>How many city/local returns?</label><select id="localCount"><option value="1">1</option><option value="2">2</option><option value="3">3+</option></select></div>
+<div class="controls"><button class="btn secondary" onclick="go(3)">Back</button><button class="btn primary" onclick="go(5)">Continue</button></div>
+</section>
+<section class="stage" id="s5">
+<h2>Special Circumstances</h2>
+<p>Do any of the following apply?</p>
+<div class="checks">
+<label class="check"><input class="special" type="checkbox" value="energy"/>Energy-efficient home improvements or residential clean energy expenses</label>
+<label class="check"><input class="special" type="checkbox" value="foreign"/>Foreign income, foreign accounts, or foreign tax reporting</label>
+<label class="check"><input class="special" type="checkbox" value="unlisted"/>Another tax situation that wasn't covered in this estimator</label>
+<label class="check"><input id="specialNone" type="checkbox"/>None of these</label>
+</div>
+<div class="conditional" id="specialTextWrap"><label>Briefly explain</label><textarea id="specialText"></textarea></div>
+<p class="note">Some situations require individual review before an accurate price can be estimated.</p>
+<div class="controls"><button class="btn secondary" onclick="go(4)">Back</button><button class="btn primary" onclick="go(6)">Continue</button></div>
+</section>
+<section class="stage" id="s6">
+<h2>Almost Done</h2>
+<div class="field"><label>Will you have all tax documents and supporting information available when you complete intake?</label>
+<select id="docsReady"><option value="yes">Yes</option><option value="no">No</option><option value="unsure">Unsure</option></select>
+<p class="note">Complete information helps keep your fee within the estimated range. Additional fees may apply for missing information, follow-up, research, or review.</p>
+</div>
+<div class="conditional" id="bizReadyWrap">
+<label>Will your business income, expenses, mileage/vehicle information, and supporting records be ready?</label>
+<select id="bizReady"><option value="yes">Yes</option><option value="no">No</option><option value="unsure">Unsure</option></select>
+</div>
+<label class="check" style="margin-top:24px"><input id="confirm" type="checkbox"/>I confirm that I have included all income sources, tax documents, and tax situations that I currently expect to report.</label>
+<p class="note">Leaving out information may result in an inaccurate estimate or a different final fee.</p>
+<div class="error" id="confirmError">Please confirm that you've included everything you currently expect to report.</div>
+<div class="controls"><button class="btn secondary" onclick="go(5)">Back</button><button class="btn primary" onclick="calculate()">Calculate My Tax Prep Estimate</button></div>
+</section>
+<div class="result" id="normalResult">
+<div class="eyebrow">Your Estimated Tax Preparation Fee</div>
+<div class="total" id="total">$0</div>
+<h3>Estimate Breakdown</h3>
+<div class="breakdown">
+<div class="row"><span>Tax preparation</span><strong id="prep">$0</strong></div>
+<div class="row"><span>Additional state return(s)</span><strong id="stateFee">$0</strong></div>
+<div class="row"><span>City/local return(s)</span><strong id="localFee">$0</strong></div>
+<div class="row"><strong>Estimated Total</strong><strong id="total2">$0</strong></div>
+</div>
+<p>This estimate represents the expected low end based on the information entered and is <strong>not a guaranteed final price.</strong></p>
+<p>Your fee may increase for additional tax situations, complexity, missing or undisclosed information, documentation, research, or review.</p>
+<p>Returns requiring more than 2 hours of preparation may incur additional preparation fees at <strong>$50 per hour, prorated in 15-minute increments ($12.50 per 15 minutes).</strong></p>
+<p>If information is expected to significantly change your estimate, LT Tax Co. will discuss the price change before additional work is completed.</p>
+<div id="portalQuestion" style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border)">
+<h3>Do you want to request a client portal?</h3>
+<div class="controls" style="justify-content:flex-start">
+<button class="btn primary" onclick="requestPortal()" type="button">Yes</button>
+<button class="btn secondary" onclick="declinePortal()" type="button">No</button>
+</div>
+<p id="portalNoMessage" style="display:none;margin-top:20px;font-weight:700">Not a problem! Shopping around is smart! We hope to see you back here again. :)</p>
+</div>
+</div>
+<div class="result" id="manualResult">
+<h2>Let's Take a Closer Look</h2>
+<p>Based on the information entered, your situation may require additional review before an accurate preparation fee can be estimated. Rather than give you an inaccurate estimate, LT Tax Co. can review your situation individually.</p>
+<div id="manualRequestQuestion" style="margin-top:28px;padding-top:24px;border-top:1px solid var(--border)">
+<h3>Do you want to send your estimate request to LT Tax Co. and have a professional reach out to you?</h3>
+<div class="controls" style="justify-content:flex-start">
+<button class="btn primary" onclick="requestManualReview()" type="button">Yes</button>
+<button class="btn secondary" onclick="declineManualReview()" type="button">No</button>
+</div>
+<p id="manualNoMessage" style="display:none;margin-top:20px;font-weight:700">Not a problem! Shopping around is smart! We hope to see you back here again. :)</p>
+</div>
+</div>
 </div>
 </main>
-
-<footer><div class="wrap"><strong>LT Tax Co.</strong> &nbsp; | &nbsp; <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div></footer>
-
+<footer><div class="wrap"><strong>LT Tax Co.</strong>   |   <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div></footer>
 <script>
 const states=["Alabama","Alaska","Arizona","Arkansas","California","Colorado","Connecticut","Delaware","Florida","Georgia","Hawaii","Idaho","Illinois","Indiana","Iowa","Kansas","Kentucky","Louisiana","Maine","Maryland","Massachusetts","Michigan","Minnesota","Mississippi","Missouri","Montana","Nebraska","Nevada","New Hampshire","New Jersey","New Mexico","New York","North Carolina","North Dakota","Ohio","Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina","South Dakota","Tennessee","Texas","Utah","Vermont","Virginia","Washington","West Virginia","Wisconsin","Wyoming"];
 

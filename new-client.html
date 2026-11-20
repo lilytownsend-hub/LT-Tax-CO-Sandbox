@@ -1,6 +1,7 @@
-<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Request Client Portal | LT Tax Co.</title><style>
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>New Client Information | LT Tax Co.</title><style>
 :root{--burgundy:#5A0E1E;--burgundy-dark:#3f0914;--charcoal:#2E2E2E;--cream:#fbf7ef;--cream2:#f5eee3;--white:#fffdf9;--border:#dfd4c6}
 *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--charcoal);font-family:Arial,Helvetica,sans-serif;line-height:1.6}.wrap{width:min(760px,calc(100% - 36px));margin:auto}header{border-bottom:1px solid #e8ded0;background:var(--cream)}.nav{min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand img{width:300px;max-width:48vw;display:block}nav{display:flex;gap:18px;flex-wrap:wrap}nav a{color:var(--charcoal);font-weight:700;text-decoration:none}main{padding:58px 0 90px}.eyebrow{color:var(--burgundy);font-size:.78rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}h1,h2{font-family:Georgia,"Times New Roman",serif;color:var(--burgundy-dark);font-weight:500}h1{font-size:clamp(2.6rem,6vw,4.5rem);line-height:1.05;margin:10px 0 22px}.card{background:var(--white);border:1px solid var(--border);padding:28px;border-radius:6px;margin-top:30px}.field{margin:17px 0}label{display:block;font-weight:700;margin-bottom:7px}input{width:100%;padding:12px;border:1px solid #cfc4b6;border-radius:4px;background:white;font:inherit}.btn{display:inline-block;border:1px solid var(--burgundy);border-radius:4px;padding:12px 20px;font-weight:700;font:inherit;cursor:pointer;background:var(--burgundy);color:white;text-decoration:none}.security{background:var(--cream2);padding:16px 18px;border-left:3px solid var(--burgundy);margin:24px 0}.estimate{font-family:Georgia,"Times New Roman",serif;color:var(--burgundy);font-size:2.2rem;margin:6px 0}.note{font-size:.92rem;color:#5c5651}.status{display:none;padding:16px 18px;margin-top:18px;border-left:3px solid var(--burgundy);background:var(--cream2)}footer{background:var(--charcoal);color:#f5eee3;padding:30px 0}footer a{color:white}@media(max-width:650px){.nav{flex-direction:column;align-items:flex-start;padding:14px 0}.brand img{width:260px;max-width:100%}main{padding-top:38px}.card{padding:22px}}
 </style>
@@ -17,21 +18,20 @@
 .brand:has(> img[src="logo-horizontal.png"])::before{left:40%;top:26%}
 .brand:has(> img[src="logo-horizontal.png"])::after{left:92%;top:35%}
 </style>
-
-</head><body>
-<header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html">Back to Home</a><a href="https://taxestogo.com/App/Download/71228">Returning Client Login</a></nav></div></header>
+<meta content="Learn how to get started with LT Tax Co. and use its secure tax document portal." name="description"/><meta content="index, follow" name="robots"/><link href="https://lttaxco.com/new-client.html" rel="canonical"/><meta content="New Client Information | LT Tax Co." property="og:title"/><meta content="Learn how to get started with LT Tax Co. and use its secure tax document portal." property="og:description"/><meta content="website" property="og:type"/><meta content="https://lttaxco.com/new-client.html" property="og:url"/></head><body>
+<header><div class="wrap nav"><a class="brand" href="index.html"><img alt="LT Tax Co." src="logo-horizontal.png"/></a><nav><a href="index.html">Back to Home</a><a href="https://taxestogo.com/App/Download/71228">Returning Client Login</a></nav></div></header>
 <main><div class="wrap"><div class="eyebrow">New Clients</div><h1 id="pageTitle">Request Your Client Portal</h1>
 <p id="pageIntro">Your tax prep estimate is complete. We only need your first name, last name, and email address to send your portal request to LT Tax Co.</p>
 <div class="security"><strong>Do not enter tax documents, Social Security numbers, account numbers, or other sensitive personal information here.</strong> Once your portal is activated, sensitive information and documents should be provided securely through the client portal.</div>
-<div class="card" id="requestCard"><h2 style="margin-top:0" id="resultHeading">Your Tax Prep Estimate</h2><div class="estimate" id="estimateAmount"></div><p class="note" id="resultNote">Your estimate and estimator selections will be included with your request to LT Tax Co.</p>
+<div class="card" id="requestCard"><h2 id="resultHeading" style="margin-top:0">Your Tax Prep Estimate</h2><div class="estimate" id="estimateAmount"></div><p class="note" id="resultNote">Your estimate and estimator selections will be included with your request to LT Tax Co.</p>
 <form id="portalForm">
-<input type="hidden" name="access_key" value="c177d554-ddf8-468f-b647-8dc9067ddc10"><input type="hidden" name="subject" id="subjectField" value="New Client Portal Access Request"><input type="hidden" name="from_name" value="LT Tax Co. Website"><input type="hidden" name="form_type" id="formTypeField" value="New Client Portal Access Request"><input type="hidden" name="client_facing_result" id="clientFacingField"><input type="hidden" name="tax_prep_estimate" id="estimateField"><input type="hidden" name="internal_calculator_comparison" id="internalEstimateField"><input type="hidden" name="estimator_selections" id="summaryField">
-<div class="field"><label for="firstName">First name</label><input id="firstName" name="first_name" autocomplete="given-name" required></div>
-<div class="field"><label for="lastName">Last name</label><input id="lastName" name="last_name" autocomplete="family-name" required></div>
-<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
-<button class="btn" type="submit" id="sendBtn">Send Request</button><div class="status" id="status"></div></form></div>
+<input name="access_key" type="hidden" value="c177d554-ddf8-468f-b647-8dc9067ddc10"/><input id="subjectField" name="subject" type="hidden" value="New Client Portal Access Request"/><input name="from_name" type="hidden" value="LT Tax Co. Website"/><input id="formTypeField" name="form_type" type="hidden" value="New Client Portal Access Request"/><input id="clientFacingField" name="client_facing_result" type="hidden"/><input id="estimateField" name="tax_prep_estimate" type="hidden"/><input id="internalEstimateField" name="internal_calculator_comparison" type="hidden"/><input id="summaryField" name="estimator_selections" type="hidden"/>
+<div class="field"><label for="firstName">First name</label><input autocomplete="given-name" id="firstName" name="first_name" required=""/></div>
+<div class="field"><label for="lastName">Last name</label><input autocomplete="family-name" id="lastName" name="last_name" required=""/></div>
+<div class="field"><label for="email">Email</label><input autocomplete="email" id="email" name="email" placeholder="you@example.com" required="" type="email"/></div>
+<button class="btn" id="sendBtn" type="submit">Send Request</button><div class="status" id="status"></div></form></div>
 <div class="card" id="missing" style="display:none"><h2 style="margin-top:0">Complete Your Estimate First</h2><p>New client portal requests begin with the LT Tax Co. tax prep estimator.</p><a class="btn" href="estimator.html?newclient=1">Get Your Tax Prep Estimate</a></div>
-</div></main><footer><div class="wrap"><strong>LT Tax Co.</strong> &nbsp; | &nbsp; lily.townsend@lttaxco.com</div></footer>
+</div></main><footer><div class="wrap"><strong>LT Tax Co.</strong>   |   lily.townsend@lttaxco.com</div></footer>
 <script>
 const saved=sessionStorage.getItem('ltTaxEstimate');
 let isManual=false;
