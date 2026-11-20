@@ -1,11 +1,21 @@
-SANDBOX TEST PACKET — BASED ON OCTOBER 20 FIX16 MASTER
+LT Tax Co. — combined sandbox website update packet
+Source: October 20 FIX16 master, with earlier approved sandbox changes.
+Upload extracted contents to lilytownsend-hub/LT-Tax-CO-Sandbox.
+Replace existing files when prompted. Do NOT upload the ZIP itself.
+Production remains untouched.
 
-Upload the contents of this ZIP to the ROOT of lilytownsend-hub/LT-Tax-CO-Sandbox.
-Replace index.html; add returning-client.html and book-appointment.html.
-The remaining original master files are included unchanged so the packet is self-contained.
-DO NOT upload this ZIP directly as a website file; extract it first.
+Latest approved changes:
+- Keep Year Round Support heading, with smaller 'Call us!' text and phone number.
+- Move Get in Touch section above How to Get Started.
+- Rename How It Works to How to Get Started, with the three approved steps.
+- Rename Returning Client Login buttons to Returning Client.
+- Rename returning-client.html page heading to Returning Clients.
 
-Phone/address used (please confirm): (608) 728-7224; 101 E. Milwaukee Street, Suite 419, Janesville, WI 53545.
-Google Maps satellite embed requires internet and may show the building rather than suite.
-The existing New Client? Get Started link remains unchanged and leads to TaxesToGo.
-No production edits. No SEO changes. Review sandbox before deploying live.
+Included earlier changes:
+- Returning client TaxesToGo smartphone instructions.
+- Booking page with January 1, 2027 expected intake date.
+- Office phone, address, Google Maps directions and aerial map.
+
+Verify phone (608) 728-7224 and office address
+101 E. Milwaukee Street, Suite 419, Janesville, WI 53545
+before production deployment.
