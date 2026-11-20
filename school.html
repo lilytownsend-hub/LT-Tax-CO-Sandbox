@@ -9,6 +9,21 @@ nav .lt-resource-options{position:absolute;top:100%;left:0;min-width:190px;backg
 nav .lt-resource-options a{display:block;color:#2e2e2e;text-decoration:none;padding:11px 14px;white-space:nowrap;font-weight:700}
 nav .lt-resource-options a:hover,nav .lt-resource-options a:focus-visible{background:#f5eee3;color:#5a0e1e}
 </style>
+
+<style id="lt-logo-trademark">
+/* Responsive trademark marks for the two parts of the existing logo.
+   The original logo image is preserved without modification. */
+.brand:has(> img[src="logo-horizontal.png"]){position:relative;display:inline-block;line-height:0;flex-shrink:0}
+.brand:has(> img[src="logo-horizontal.png"])::before,
+.brand:has(> img[src="logo-horizontal.png"])::after{
+  position:absolute;z-index:1;content:"™";font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(6px, .75vw, 10px);font-weight:700;line-height:1;
+  color:#5A0E1E;pointer-events:none;
+}
+.brand:has(> img[src="logo-horizontal.png"])::before{left:40%;top:26%}
+.brand:has(> img[src="logo-horizontal.png"])::after{left:92%;top:35%}
+</style>
+
 </head><body><header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html#services">Services</a><details class="lt-resource-menu"><summary>Resources</summary><div class="lt-resource-options"><a href="resources.html">Free Resources</a><a href="paid-resources.html">Paid Resources</a></div></details>
       <a href="careers.html">Careers</a><a href="index.html#process">How It Works</a><a href="index.html#contact">Contact</a></nav></div></header><main><div class="wrap"><div class="eyebrow">The Adulting Manual Nobody Gave You</div><h1>Why Didn't They Teach Me This in School?</h1><p class="lead">Adulthood came with a paycheck, taxes, insurance, retirement accounts, loans, and absolutely no owner's manual. Start with the question you wish somebody had explained sooner.</p><div class="grid">
 <div class="mini"><h2>Why did earning more change my taxes?</h2><p>Tax brackets are marginal. Moving into a higher bracket does not make every dollar you earned subject to that higher rate.</p></div>

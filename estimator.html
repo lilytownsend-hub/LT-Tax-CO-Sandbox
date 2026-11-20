@@ -59,6 +59,21 @@ footer a{color:white}
   .stage{padding:22px}
 }
 </style>
+
+<style id="lt-logo-trademark">
+/* Responsive trademark marks for the two parts of the existing logo.
+   The original logo image is preserved without modification. */
+.brand:has(> img[src="logo-horizontal.png"]){position:relative;display:inline-block;line-height:0;flex-shrink:0}
+.brand:has(> img[src="logo-horizontal.png"])::before,
+.brand:has(> img[src="logo-horizontal.png"])::after{
+  position:absolute;z-index:1;content:"™";font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(6px, .75vw, 10px);font-weight:700;line-height:1;
+  color:#5A0E1E;pointer-events:none;
+}
+.brand:has(> img[src="logo-horizontal.png"])::before{left:40%;top:26%}
+.brand:has(> img[src="logo-horizontal.png"])::after{left:92%;top:35%}
+</style>
+
 </head>
 <body>
 <header>

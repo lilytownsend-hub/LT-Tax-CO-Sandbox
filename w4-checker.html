@@ -9,7 +9,22 @@
     if (e.persisted) window.location.replace('withholding-assessment-access.html');
   });
 })();
-</script></head><body>
+</script>
+<style id="lt-logo-trademark">
+/* Responsive trademark marks for the two parts of the existing logo.
+   The original logo image is preserved without modification. */
+.brand:has(> img[src="logo-horizontal.png"]){position:relative;display:inline-block;line-height:0;flex-shrink:0}
+.brand:has(> img[src="logo-horizontal.png"])::before,
+.brand:has(> img[src="logo-horizontal.png"])::after{
+  position:absolute;z-index:1;content:"™";font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(6px, .75vw, 10px);font-weight:700;line-height:1;
+  color:#5A0E1E;pointer-events:none;
+}
+.brand:has(> img[src="logo-horizontal.png"])::before{left:40%;top:26%}
+.brand:has(> img[src="logo-horizontal.png"])::after{left:92%;top:35%}
+</style>
+
+</head><body>
 <header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><a href="resources.html">← Back to Resources</a></div></header><main><!-- $10 PAID TOOL: connect Helcim checkout/access flow before publishing this revision. --><div class="wrap"><div class="eyebrow">Free Withholding Review</div><h1>Withholding Assessment</h1><p>Not sure whether enough federal and state tax is coming out of your paycheck? Answer a few questions and LT Tax Co. will review your information and prepare an example federal W-4 and applicable state withholding form for you — <strong>free</strong>. <strong>Nothing is sent to your employer.</strong></p>
 <div class="warning"><strong>Have your most recent paystub(s) handy.</strong> Do not enter Social Security numbers, bank account numbers, or upload tax documents here.</div>
 <form id="w4Form">

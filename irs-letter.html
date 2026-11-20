@@ -9,6 +9,21 @@ nav .lt-resource-options{position:absolute;top:100%;left:0;min-width:190px;backg
 nav .lt-resource-options a{display:block;color:#2e2e2e;text-decoration:none;padding:11px 14px;white-space:nowrap;font-weight:700}
 nav .lt-resource-options a:hover,nav .lt-resource-options a:focus-visible{background:#f5eee3;color:#5a0e1e}
 </style>
+
+<style id="lt-logo-trademark">
+/* Responsive trademark marks for the two parts of the existing logo.
+   The original logo image is preserved without modification. */
+.brand:has(> img[src="logo-horizontal.png"]){position:relative;display:inline-block;line-height:0;flex-shrink:0}
+.brand:has(> img[src="logo-horizontal.png"])::before,
+.brand:has(> img[src="logo-horizontal.png"])::after{
+  position:absolute;z-index:1;content:"™";font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(6px, .75vw, 10px);font-weight:700;line-height:1;
+  color:#5A0E1E;pointer-events:none;
+}
+.brand:has(> img[src="logo-horizontal.png"])::before{left:40%;top:26%}
+.brand:has(> img[src="logo-horizontal.png"])::after{left:92%;top:35%}
+</style>
+
 </head><body><header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html#services">Services</a><details class="lt-resource-menu"><summary>Resources</summary><div class="lt-resource-options"><a href="resources.html">Free Resources</a><a href="paid-resources.html">Paid Resources</a></div></details>
       <a href="careers.html">Careers</a><a href="index.html#process">How It Works</a><a href="index.html#contact">Contact</a></nav></div></header><main><div class="wrap"><div class="eyebrow">Notices & Letters</div><h1>I Got a Letter From the IRS. Now What?</h1><p class="lead">An IRS letter can look intimidating before you even know what it says. Start with the reason for the notice—not the size of the envelope.</p>
 <div class="box"><label for="notice">What does the letter seem to be about?</label><select id="notice"><option value="">Choose the closest match</option><option value="change">The IRS changed something on my return</option><option value="info">The IRS wants more information</option><option value="owe">It says I owe money</option><option value="verify">It asks me to verify my identity or return</option><option value="audit">Audit, examination, or appointment</option><option value="missing">It says something is missing or wasn't filed</option><option value="other">I'm not sure / something else</option></select><button onclick="showNotice()">What should I do?</button><div id="answer" class="result hidden"></div></div>

@@ -31,3 +31,8 @@ Eyebrow: TAX • BOOKKEEPING • FINANCIAL GUIDANCE
 Heading: LT Tax Co.
 Tagline: More Than Taxes. We're Here Year-Round.
 Based on the preceding combined Services Update Packet. Upload extracted files to sandbox.
+
+VERSION 847 — THE TRADEMARK STRIKES BACK
+Adds responsive ™ symbols to both the LT monogram and TAX CO. portions of the
+existing header logo across all website pages. Original logo PNG unchanged.
+Upload extracted contents to GitHub SANDBOX, not production.

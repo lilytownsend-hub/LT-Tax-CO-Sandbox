@@ -9,5 +9,20 @@ nav .lt-resource-options{position:absolute;top:100%;left:0;min-width:190px;backg
 nav .lt-resource-options a{display:block;color:#2e2e2e;text-decoration:none;padding:11px 14px;white-space:nowrap;font-weight:700}
 nav .lt-resource-options a:hover,nav .lt-resource-options a:focus-visible{background:#f5eee3;color:#5a0e1e}
 </style>
+
+<style id="lt-logo-trademark">
+/* Responsive trademark marks for the two parts of the existing logo.
+   The original logo image is preserved without modification. */
+.brand:has(> img[src="logo-horizontal.png"]){position:relative;display:inline-block;line-height:0;flex-shrink:0}
+.brand:has(> img[src="logo-horizontal.png"])::before,
+.brand:has(> img[src="logo-horizontal.png"])::after{
+  position:absolute;z-index:1;content:"™";font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(6px, .75vw, 10px);font-weight:700;line-height:1;
+  color:#5A0E1E;pointer-events:none;
+}
+.brand:has(> img[src="logo-horizontal.png"])::before{left:40%;top:26%}
+.brand:has(> img[src="logo-horizontal.png"])::after{left:92%;top:35%}
+</style>
+
 </head><body><header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html#services">Services</a><details class="lt-resource-menu"><summary>Resources</summary><div class="lt-resource-options"><a href="resources.html">Free Resources</a><a href="paid-resources.html">Paid Resources</a></div></details>
       <a href="careers.html">Careers</a><a href="index.html#process">How It Works</a><a href="index.html#contact">Contact</a></nav></div></header><main><div class="wrap"><div class="eyebrow">Marketplace Insurance</div><h1>I Had Marketplace Insurance. Where's My Tax Form?</h1><p class="lead">If you or someone in your household had Marketplace health insurance, the tax form you're usually looking for is <strong>Form 1095-A</strong>. You may be able to download it now instead of waiting for another copy in the mail.</p><div class="box"><h2>HealthCare.gov</h2><ol><li>Sign in to your Marketplace account.</li><li>Select the application for the <strong>tax year you're filing</strong>—not the current coverage year.</li><li>Select <strong>Tax Forms</strong>.</li><li>Under <strong>Your Form 1095-A</strong>, choose <strong>Download PDF</strong>.</li><li>If you see a form marked <strong>Corrected</strong>, use the corrected version instead of the earlier one.</li></ol><p><a class="btn" href="https://www.healthcare.gov/tax-form-1095/">HealthCare.gov 1095-A Help</a></p></div><div class="box"><h2>Minnesota / MNsure</h2><p>Sign in to your MNsure account and check <strong>Notifications</strong> or your Enrollment Dashboard / <strong>My Inbox</strong> for the 1095-A attachment.</p><p><a class="btn" href="https://www.mnsure.org/manage/tax-info/1095-a/where-to-find.jsp">MNsure 1095-A Instructions</a></p></div><div class="note"><strong>Don't race to file without it.</strong> If you had Marketplace coverage, make sure you have an accurate 1095-A before filing. You can receive more than one 1095-A if plans, household members, or coverage changed during the year. Form 1095-A information is used with Form 8962 to reconcile the Premium Tax Credit when required.</div><p class="small">If your coverage came through a state Marketplace other than HealthCare.gov or MNsure, use that Marketplace's official account or support site to retrieve the form.</p><p><a class="btn secondary" href="resources.html">Back to Free Resources</a></p></div></main><footer><div class="wrap"><strong>LT Tax Co.</strong> &nbsp; | &nbsp; <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div></footer></body></html>

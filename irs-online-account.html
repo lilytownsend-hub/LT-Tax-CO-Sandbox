@@ -9,5 +9,20 @@ nav .lt-resource-options{position:absolute;top:100%;left:0;min-width:190px;backg
 nav .lt-resource-options a{display:block;color:#2e2e2e;text-decoration:none;padding:11px 14px;white-space:nowrap;font-weight:700}
 nav .lt-resource-options a:hover,nav .lt-resource-options a:focus-visible{background:#f5eee3;color:#5a0e1e}
 </style>
+
+<style id="lt-logo-trademark">
+/* Responsive trademark marks for the two parts of the existing logo.
+   The original logo image is preserved without modification. */
+.brand:has(> img[src="logo-horizontal.png"]){position:relative;display:inline-block;line-height:0;flex-shrink:0}
+.brand:has(> img[src="logo-horizontal.png"])::before,
+.brand:has(> img[src="logo-horizontal.png"])::after{
+  position:absolute;z-index:1;content:"™";font-family:Arial,Helvetica,sans-serif;
+  font-size:clamp(6px, .75vw, 10px);font-weight:700;line-height:1;
+  color:#5A0E1E;pointer-events:none;
+}
+.brand:has(> img[src="logo-horizontal.png"])::before{left:40%;top:26%}
+.brand:has(> img[src="logo-horizontal.png"])::after{left:92%;top:35%}
+</style>
+
 </head><body><header><div class="wrap nav"><a class="brand" href="index.html"><img src="logo-horizontal.png" alt="LT Tax Co."></a><nav><a href="index.html#services">Services</a><details class="lt-resource-menu"><summary>Resources</summary><div class="lt-resource-options"><a href="resources.html">Free Resources</a><a href="paid-resources.html">Paid Resources</a></div></details>
       <a href="careers.html">Careers</a><a href="index.html#process">How It Works</a><a href="index.html#contact">Contact</a></nav></div></header><main><div class="wrap"><div class="eyebrow">Your Federal Tax Records</div><h1>What Does the IRS Know About Me?</h1><p class="lead">Your IRS Individual Online Account can answer a surprising number of “where do I find that?” tax questions without waiting on hold or digging through old paperwork.</p><div class="grid"><div class="mini"><h2>Transcripts</h2><p>Access available tax return, account, and wage-and-income transcripts.</p></div><div class="mini"><h2>Payments & balances</h2><p>Review certain payment history, balances, and payment-related information tied to your federal tax account.</p></div><div class="mini"><h2>Notices & records</h2><p>Some notices and tax records can be available through the account, depending on the year and item.</p></div><div class="mini"><h2>IP PIN</h2><p>If you're enrolled in the Identity Protection PIN program, your current IP PIN can be retrieved through your account.</p></div></div><p><a class="btn" href="https://www.irs.gov/payments/online-account-for-individuals">Go to IRS Individual Online Account</a></p><div class="note"><strong>Why set it up before you need it?</strong> Because the worst time to learn where your tax records live is when you're already missing a document, responding to a notice, or trying to file.</div><p><a class="btn secondary" href="resources.html">Back to Free Resources</a></p></div></main><footer><div class="wrap"><strong>LT Tax Co.</strong> &nbsp; | &nbsp; <a href="mailto:lily.townsend@lttaxco.com">lily.townsend@lttaxco.com</a></div></footer></body></html>
