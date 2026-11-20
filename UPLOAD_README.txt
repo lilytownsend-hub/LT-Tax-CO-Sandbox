@@ -19,3 +19,9 @@ Included earlier changes:
 Verify phone (608) 728-7224 and office address
 101 E. Milwaukee Street, Suite 419, Janesville, WI 53545
 before production deployment.
+
+SERVICES UPDATE — November 20, 2026
+- Homepage service headings: Individual Tax Preparation unchanged; Bookkeeping; Consultations.
+- Bookkeeping page: remove hourly pricing box, heading Bookkeeping, rename request section Request an Estimate, retain email form and Send Request, add Book an Appointment link to book-appointment.html.
+- Consultations: retain price, replace introductory paragraph with tax projections, tax consultations, Business Operations Planning consultations and daily money management planning. After a successful consultation form submission, show thank-you confirmation and Book an Appointment button to book-appointment.html.
+- Other pages remain unchanged from prior combined packet.
