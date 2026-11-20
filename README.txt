@@ -1,33 +1,24 @@
-VANESSA 2.0 — LT TAX CO.
+LT TAX CO. — SEARCH DISCOVERABILITY PACKET (2026-11-20)
 
-Files:
-  vanessa.js — self-contained chat widget; inject once near the closing </body> of every site page.
-  index.html — standalone test page.
+FILES READY TO UPLOAD TO GITHUB REPOSITORY lilytownsend-hub/TaxCo, BRANCH main:
+  robots.txt
+  sitemap.xml
 
-Installation on LT Tax Co website:
-  1. Upload vanessa.js to a public path on the website (e.g. /assets/vanessa.js).
-  2. Before loading the script, set the verified site routes, e.g.:
-     <script>
-     window.LT_VANESSA_CONFIG = {
-       freeResources:'/free-resources', contact:'/contact',
-       bookkeeping:'/bookkeeping', consultations:'/tax-consultations',
-       reviews:'VERIFIED_GOOGLE_REVIEW_URL',
-       states:{'Wisconsin':'VERIFIED_OFFICIAL_WI_REFUND_TRACKER'}
-     };
-     </script>
-     <script src="/assets/vanessa.js"></script>
-  3. Do not copy the example route values without verifying them against the actual website.
+HOW TO UPLOAD
+1. Open https://github.com/lilytownsend-hub/TaxCo
+2. On the Code tab, choose Add file > Upload files.
+3. Upload robots.txt and sitemap.xml (NOT the ZIP or README) to the repository ROOT, beside index.html and CNAME.
+4. Commit directly to main.
+5. After GitHub Pages deploys, visit:
+   https://lttaxco.com/robots.txt
+   https://lttaxco.com/sitemap.xml
+   Both should show text/XML instead of a 404.
 
-Verified links already embedded:
-  Booking: https://bookings.cloud.microsoft/book/LTTaxCo2@lttaxco.com/?ismsaljsauthenabled
-  Client portal: https://taxestogo.com/App/Download/71228
-  Federal refund: https://www.irs.gov/wheres-my-refund
+NEXT TASKS (NOT DONE BY THESE TWO FILES)
+- Add page-specific meta descriptions, canonical tags, and appropriate JSON-LD structured data.
+- Add service pages for any services that are genuinely offered (e.g. payroll) and link them from the homepage.
+- Verify site ownership in Google Search Console and Bing Webmaster Tools; submit https://lttaxco.com/sitemap.xml.
+- Check URL Inspection and indexing reports. A sitemap does not guarantee indexing or AI recommendations.
 
-Limitations before live deployment:
-  - Missing internal route URLs, Google review URL and official state trackers must be verified and connected.
-  - Approved mascot artwork was not changed or recreated; it must be separated from the approved reference artwork and added to the UI.
-  - Navigation persistence requires integration with the actual website router; default widget fires 'lt-vanessa-navigate'.
-  - The Back control is an initial implementation and needs more testing for nested branches.
-  - No server-side staff contact capture, email notifications or redacted transcript delivery has been implemented; contact page is used instead.
-  - Browser refresh intentionally resets chat.
-  - Full production QA and security/accessibility review remain necessary.
+CAUTION
+The sitemap contains only HTML pages confirmed to exist in the production repository. If any are intentionally private, unpublished, or not suitable for indexing, remove their <url> entry before upload. The robots file allows public crawler access; it does not force bots to crawl, index, or recommend the site. Do not put sensitive client data in this repository.
