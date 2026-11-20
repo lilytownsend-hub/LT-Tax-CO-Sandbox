@@ -25,3 +25,9 @@ SERVICES UPDATE — November 20, 2026
 - Bookkeeping page: remove hourly pricing box, heading Bookkeeping, rename request section Request an Estimate, retain email form and Send Request, add Book an Appointment link to book-appointment.html.
 - Consultations: retain price, replace introductory paragraph with tax projections, tax consultations, Business Operations Planning consultations and daily money management planning. After a successful consultation form submission, show thank-you confirmation and Book an Appointment button to book-appointment.html.
 - Other pages remain unchanged from prior combined packet.
+
+FINAL HOMEPAGE HERO UPDATE:
+Eyebrow: TAX • BOOKKEEPING • FINANCIAL GUIDANCE
+Heading: LT Tax Co.
+Tagline: More Than Taxes. We're Here Year-Round.
+Based on the preceding combined Services Update Packet. Upload extracted files to sandbox.
